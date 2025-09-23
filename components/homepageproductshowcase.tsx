@@ -6,7 +6,7 @@ import Image from "next/image";
 import products from "@/data/products"; // assumes default export from data/products.ts
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-type ProductType = {
+export type ProductType = {
   id: string;
   name: string;
   price: string;
@@ -45,7 +45,7 @@ export default function HomepageProductShowcase() {
   }, []);
 
   // 3D tilt handlers
-  function handleMouseMove(index: number, e: React.MouseEvent) {
+  function handleMouseMove(index: number, e: React.MouseEvent<HTMLDivElement>) {
     const el = cardRefs.current[index];
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -57,10 +57,8 @@ export default function HomepageProductShowcase() {
     setRotations((s) => ({ ...s, [index]: { x: 0, y: 0 } }));
   }
 
-  // Defensive: ensure `products` is an array
-  const items: ProductType[] = Array.isArray((products as any).default)
-    ? (products as any).default
-    : (products as ProductType[]);
+  // Defensive: ensure `products` is an array of ProductType
+  const items: ProductType[] = Array.isArray(products) ? products : [];
 
   return (
     <section className="relative py-20 px-6 sm:px-10 overflow-hidden">
@@ -82,7 +80,9 @@ export default function HomepageProductShowcase() {
             <div
               key={product.id}
               data-index={index}
-              ref={(el) => { cardRefs.current[index] = el; }}
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
               onMouseMove={(e) => handleMouseMove(index, e)}
               onMouseLeave={() => handleMouseLeave(index)}
               style={{
@@ -94,9 +94,11 @@ export default function HomepageProductShowcase() {
                 transition-all duration-500`}
             >
               {/* hover glow overlay */}
-              <div className="absolute inset-0 rounded-3xl pointer-events-none transition-opacity duration-300 opacity-0 hover:opacity-100"
+              <div
+                className="absolute inset-0 rounded-3xl pointer-events-none transition-opacity duration-300 opacity-0 hover:opacity-100"
                 style={{
-                  background: "linear-gradient(120deg, rgba(124,58,237,0.06), rgba(59,130,246,0.05))",
+                  background:
+                    "linear-gradient(120deg, rgba(124,58,237,0.06), rgba(59,130,246,0.05))",
                 }}
               />
 
@@ -118,7 +120,7 @@ export default function HomepageProductShowcase() {
                 <p className="text-purple-300 font-bold text-lg">{product.price}</p>
 
                 <div className="w-full mt-2">
-                  <WhatsAppButton product={product as any} phoneNumber={PHONE_NUMBER} />
+                  <WhatsAppButton product={{ ...product, mainImage: product.mainImage ?? "" }} phoneNumber={PHONE_NUMBER} />
                 </div>
               </div>
             </div>

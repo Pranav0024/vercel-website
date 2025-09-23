@@ -9,7 +9,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { useMouse } from "@/components/MouseContext";
 
 const ShopPage = () => {
-  const phoneNumber = "919888888888"; // change to your WhatsApp number
+  const phoneNumber = "918360746541"; // change to your WhatsApp number
   const mousePos = useMouse();
 
   return (

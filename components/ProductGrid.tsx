@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ProductCard} from "./productshowcase";
 import { Product } from "@/types/types"; // or "../types/types"
 import ProductShowcase from "./productshowcase";
 
@@ -70,7 +69,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             </div>
           ))
         : products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductShowcase key={product.id} product={product} phoneNumber="918360746541"/>
           ))}
     </div>
   );

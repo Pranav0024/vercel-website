@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 const FloatingWhatsApp: React.FC = () => {
   const whatsappNumber = "918360746541";
@@ -47,11 +48,14 @@ const FloatingWhatsApp: React.FC = () => {
         onTouchStart={() => setIsPressed(true)}
         onTouchEnd={() => setIsPressed(false)}
       >
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-          alt="WhatsApp"
-          className="w-6 h-6 sm:w-8 sm:h-8"
-        />
+        
+      <Image
+        src="/whatsapp.png"
+        alt="WhatsApp"
+        width={50}
+        height={50}
+        priority
+      />
       </div>
     </a>
   );
