@@ -4,7 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaBars, FaXmark } from "react-icons/fa6";
+import { FaBars, FaPhone, FaXmark } from "react-icons/fa6";
+import { IoMdMail } from "react-icons/io";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,25 +14,25 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Products", href: "/shop" },
     { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    // { name: "Contact", href: "/contact" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Floating Shadow/Glass Behind Header */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute inset-0 bg-white/70 backdrop-blur-xl shadow-[0_5px_30px_rgba(0,0,0,0.05)] rounded-b-3xl"></div>
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-xl shadow-[0_5px_30px_rgba(0,0,0,0.05)]"></div>
       </div>
 
       {/* Top Contact Bar */}
-      <div className="hidden md:flex h-10 bg-blue-600 text-white text-sm items-center justify-between px-6 sm:px-12 max-w-7xl mx-auto relative z-20">
+      {/* <div className="hidden md:flex h-10 bg-blue-600 text-white text-sm items-center justify-between px-6 sm:px-12 max-w-7xl mx-auto relative z-20">
         <div className="flex gap-6 items-center">
           <span className="flex items-center gap-2">📞 +91 83607 46541</span>
           <span className="flex items-center gap-2">
             ✉️ paniar888@gmail.com
           </span>
-        </div>
-      </div>
+        </div>  
+      </div> */}
 
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative z-20">
@@ -62,6 +63,20 @@ export default function Header() {
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
+
+          {/* Vertical spacer */}
+          <div className="h-[30px] bg-black/80 w-[2px] rounded-lg" />
+
+          {/* Add a contact section beside this */}
+          <div className="inline-flex items-center justify-between gap-6 [&>*]:hover:opacity-80 [&>*]:transition-all [&>*]:duration-200 [&>*]:ease-in-out">
+            <Link href={"mailto:paniar888@gmail.com"} className="text-blue-900">
+              <IoMdMail className="text-2xl" />
+            </Link>
+            <Link href={"tel:+918360746541"} className="text-blue-900">
+              <FaPhone className="text-lg" />
+            </Link>
+          </div>
+
         </nav>
 
         {/* Mobile Menu Toggle */}
