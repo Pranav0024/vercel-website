@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
 
 const FloatingWhatsApp: React.FC = () => {
@@ -36,7 +37,7 @@ const FloatingWhatsApp: React.FC = () => {
     >
       <div
         className={`
-          w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-full shadow-lg
+          w-12 h-12 p-4 sm:w-16 sm:h-16 flex items-center justify-center rounded-full shadow-lg
           cursor-pointer bg-white/20 backdrop-blur-md border border-white/30
           transition-all duration-300
           ${isPressed ? "scale-110" : "hover:scale-105 active:scale-110"}
@@ -48,12 +49,16 @@ const FloatingWhatsApp: React.FC = () => {
         onTouchStart={() => setIsPressed(true)}
         onTouchEnd={() => setIsPressed(false)}
       >
-        <Image
+        {/* <Image
           src="/whatsapp.png"
           alt="WhatsApp"
           width={50}
           height={50}
           priority
+        /> */}
+        <FaWhatsapp
+          size={50}
+          className="text-green-500 drop-shadow-lg"
         />
       </div>
     </a>
