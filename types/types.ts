@@ -4,6 +4,6 @@ export interface Product {
   name: string;
   price: string;
   mainImage: string; // optional
-  link?: string;      // optional, for future use
-  images?: string[];  // optional, for carousel
+  link?: string; // optional, for future use
+  images?: string[]; // optional, for carousel
 }

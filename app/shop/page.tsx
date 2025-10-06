@@ -65,12 +65,11 @@ const ShopPage = () => {
                 </p>
 
                 <div className="w-full">
-                <WhatsAppButton
-                product={product}
-                phoneNumber={phoneNumber}
-                className="w-full bg-blue-600 text-white hover:bg-blue-700 transition-colors rounded-xl py-3 font-semibold shadow-md hover:shadow-lg"
-                />
-
+                  <WhatsAppButton
+                    product={product}
+                    phoneNumber={phoneNumber}
+                    className="w-full bg-blue-600 text-white hover:bg-blue-700 transition-colors rounded-xl py-3 font-semibold shadow-md hover:shadow-lg"
+                  />
                 </div>
               </div>
             ))}

@@ -18,7 +18,9 @@ const PHONE_NUMBER = "918360746541"; // replace if needed
 
 export default function HomepageProductShowcase() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [rotations, setRotations] = useState<Record<number, { x: number; y: number }>>({});
+  const [rotations, setRotations] = useState<
+    Record<number, { x: number; y: number }>
+  >({});
   const [visible, setVisible] = useState<Record<number, boolean>>({});
 
   // IntersectionObserver - reveal on scroll
@@ -34,7 +36,7 @@ export default function HomepageProductShowcase() {
           }
         });
       },
-      { threshold: 0.18 }
+      { threshold: 0.18 },
     );
 
     cardRefs.current.forEach((el) => {
@@ -117,10 +119,15 @@ export default function HomepageProductShowcase() {
                 <h3 className="text-lg md:text-xl font-semibold text-white text-center leading-tight">
                   {product.name}
                 </h3>
-                <p className="text-purple-300 font-bold text-lg">{product.price}</p>
+                <p className="text-purple-300 font-bold text-lg">
+                  {product.price}
+                </p>
 
                 <div className="w-full mt-2">
-                  <WhatsAppButton product={{ ...product, mainImage: product.mainImage ?? "" }} phoneNumber={PHONE_NUMBER} />
+                  <WhatsAppButton
+                    product={{ ...product, mainImage: product.mainImage ?? "" }}
+                    phoneNumber={PHONE_NUMBER}
+                  />
                 </div>
               </div>
             </div>

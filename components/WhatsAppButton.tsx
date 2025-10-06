@@ -17,7 +17,9 @@ export default function WhatsAppButton({
   className,
   label = "Buy Now",
 }: WhatsAppButtonProps) {
-  const text = encodeURIComponent(`Hi! I'm interested in ${product.name} (${product.id})`);
+  const text = encodeURIComponent(
+    `Hi! I'm interested in ${product.name} (${product.id})`,
+  );
   const href = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, "")}?text=${text}`;
 
   return (

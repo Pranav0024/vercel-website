@@ -27,7 +27,9 @@ export default function Header() {
       <div className="hidden md:flex h-10 bg-blue-600 text-white text-sm items-center justify-between px-6 sm:px-12 max-w-7xl mx-auto relative z-20">
         <div className="flex gap-6 items-center">
           <span className="flex items-center gap-2">📞 +91 83607 46541</span>
-          <span className="flex items-center gap-2">✉️ paniar888@gmail.com</span>
+          <span className="flex items-center gap-2">
+            ✉️ paniar888@gmail.com
+          </span>
         </div>
       </div>
 

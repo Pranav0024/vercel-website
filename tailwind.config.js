@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       backdropBlur: {
-        xs: '2px',
-        sm: '4px',
-        DEFAULT: '12px',
+        xs: "2px",
+        sm: "4px",
+        DEFAULT: "12px",
       },
     },
   },

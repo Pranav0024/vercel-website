@@ -32,7 +32,8 @@ const products = [
     name: "Spatula Brush",
     price: "₹120",
     mainImage: "/5.png",
-    link: "/shop/5",}
+    link: "/shop/5",
+  },
 ];
 
 export default products;

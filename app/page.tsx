@@ -6,10 +6,10 @@ import HomepageProductShowcase from "@/components/homepageproductshowcase";
 export default function Home() {
   return (
     <>
-    <FloatingWhatsApp />
-    <Hero />
-    <IntroducingSection />
-    <HomepageProductShowcase />
+      <FloatingWhatsApp />
+      <Hero />
+      <IntroducingSection />
+      <HomepageProductShowcase />
     </>
   );
 }

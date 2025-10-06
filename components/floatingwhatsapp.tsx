@@ -48,14 +48,13 @@ const FloatingWhatsApp: React.FC = () => {
         onTouchStart={() => setIsPressed(true)}
         onTouchEnd={() => setIsPressed(false)}
       >
-        
-      <Image
-        src="/whatsapp.png"
-        alt="WhatsApp"
-        width={50}
-        height={50}
-        priority
-      />
+        <Image
+          src="/whatsapp.png"
+          alt="WhatsApp"
+          width={50}
+          height={50}
+          priority
+        />
       </div>
     </a>
   );

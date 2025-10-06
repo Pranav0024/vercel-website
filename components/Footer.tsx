@@ -35,7 +35,8 @@ const Footer = () => {
               className="h-auto w-auto transition-transform duration-700 ease-in-out hover:scale-110 hover:rotate-[5deg]"
             />
             <p className="text-gray-700 text-sm max-w-xs">
-              Crafting modern designs with smooth experiences and sleek aesthetics.
+              Crafting modern designs with smooth experiences and sleek
+              aesthetics.
             </p>
           </div>
 
@@ -43,9 +44,18 @@ const Footer = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 flex-1">
             {[
               { title: "Shop", links: ["Products", "New Arrivals", "Sale"] },
-              { title: "About", links: ["Our Story", "Careers", "Sustainability"] },
-              { title: "Support", links: ["Help Center", "Contact Us", "FAQs"] },
-              { title: "Legal", links: ["Privacy Policy", "Terms of Service", "Cookie Policy"] },
+              {
+                title: "About",
+                links: ["Our Story", "Careers", "Sustainability"],
+              },
+              {
+                title: "Support",
+                links: ["Help Center", "Contact Us", "FAQs"],
+              },
+              {
+                title: "Legal",
+                links: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+              },
             ].map((section) => (
               <div key={section.title} className="space-y-4">
                 <h3 className="text-blue-600 font-semibold">{section.title}</h3>
@@ -77,7 +87,9 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="mt-12 border-t border-gray-200 pt-6 flex flex-col sm:flex-row justify-between items-center text-gray-500 text-sm space-y-4 sm:space-y-0">
-          <p>© {new Date().getFullYear()} Your Company. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Your Company. All rights reserved.
+          </p>
           <div className="flex space-x-6">
             {["Twitter", "Instagram", "LinkedIn"].map((platform) => (
               <a

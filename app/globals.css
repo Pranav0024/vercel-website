@@ -25,47 +25,59 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-.range{
-    --range-shdw: #3B82F6;
+.range {
+  --range-shdw: #3b82f6;
 }
 
-.checkbox:checked, .checkbox[checked="true"], .checkbox[aria-checked="true"] {
-    background-repeat: no-repeat;
-    animation: checkmark var(--animation-input, 0.2s) ease-out;
-    background-color: #3B82F6;
-    background-image: linear-gradient(-45deg, transparent 65%, #3B82F6 65.99%),
-      linear-gradient(45deg, transparent 75%, #3B82F6 75.99%),
-      linear-gradient(-45deg, #3B82F6 40%, transparent 40.99%),
-      linear-gradient(
-        45deg,
-        #3B82F6 30%,
-        white 30.99%,
-        white 40%,
-        transparent 40.99%
-      ),
-      linear-gradient(-45deg, white 50%, #3B82F6 50.99%);
+.checkbox:checked,
+.checkbox[checked="true"],
+.checkbox[aria-checked="true"] {
+  background-repeat: no-repeat;
+  animation: checkmark var(--animation-input, 0.2s) ease-out;
+  background-color: #3b82f6;
+  background-image:
+    linear-gradient(-45deg, transparent 65%, #3b82f6 65.99%),
+    linear-gradient(45deg, transparent 75%, #3b82f6 75.99%),
+    linear-gradient(-45deg, #3b82f6 40%, transparent 40.99%),
+    linear-gradient(
+      45deg,
+      #3b82f6 30%,
+      white 30.99%,
+      white 40%,
+      transparent 40.99%
+    ),
+    linear-gradient(-45deg, white 50%, #3b82f6 50.99%);
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 .animate-[float_3s_ease-in-out_infinite] {
   animation: float 3s ease-in-out infinite;
 }
 
-
 /* Floating blob animation */
 @keyframes blob {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.1); }
-  66% { transform: translate(-20px, 30px) scale(0.9); }
+  0%,
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.9);
+  }
 }
 
 .animate-blob {
@@ -78,7 +90,9 @@ body {
 
 /* Ripple effect */
 .ripple {
-  transition: all 0.6s ease-out, opacity 0.6s;
+  transition:
+    all 0.6s ease-out,
+    opacity 0.6s;
 }
 
 a:hover .ripple {

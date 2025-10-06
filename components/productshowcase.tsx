@@ -11,15 +11,24 @@ type ProductShowcaseProps = {
   phoneNumber: string;
 };
 
-export default function ProductShowcase({ product, phoneNumber }: ProductShowcaseProps) {
+export default function ProductShowcase({
+  product,
+  phoneNumber,
+}: ProductShowcaseProps) {
   const [currentImage, setCurrentImage] = useState(0);
 
   // product.mainImage is REQUIRED in shared Product type -> safe to use directly
-  const carouselImages = product.images && product.images.length > 0 ? product.images : [product.mainImage];
+  const carouselImages =
+    product.images && product.images.length > 0
+      ? product.images
+      : [product.mainImage];
 
-  const nextImage = () => setCurrentImage((prev) => (prev + 1) % carouselImages.length);
+  const nextImage = () =>
+    setCurrentImage((prev) => (prev + 1) % carouselImages.length);
   const prevImage = () =>
-    setCurrentImage((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1));
+    setCurrentImage((prev) =>
+      prev === 0 ? carouselImages.length - 1 : prev - 1,
+    );
 
   return (
     <div className="shadow-md rounded-2xl border hover:shadow-lg transition p-4 flex flex-col items-center text-center bg-white relative">
@@ -52,7 +61,9 @@ export default function ProductShowcase({ product, phoneNumber }: ProductShowcas
       </div>
 
       <h2 className="text-lg font-semibold">{product.name}</h2>
-      <p className="text-gray-600 mt-1">{product.price ? product.price : "Price on request"}</p>
+      <p className="text-gray-600 mt-1">
+        {product.price ? product.price : "Price on request"}
+      </p>
 
       <div className="mt-4 w-full">
         <WhatsAppButton
