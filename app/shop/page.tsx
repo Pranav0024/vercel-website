@@ -45,7 +45,7 @@ const ShopPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             {products.map((product) => (
               // <AltProductCard key={product.id} product={product} phoneNumber={phoneNumber} />
-              <ProductCard key={product.id} item={product} />
+              <ProductCard key={product.id} item={product} phoneNumber={phoneNumber} />
             ))}
           </div>
         )}
@@ -109,19 +109,20 @@ import { Camera } from "lucide-react";
 
 export interface ProductCardProps {
   item: Product | null
+  phoneNumber: string
 }
 
 
 const Card: React.FC<PropsWithChildren & { className?: string }> = ({ children, className }) => {
 
 
-  return <div className={twMerge("flex flex-col justify-between items-center bg-white/70 backdrop-blur-xl border border-white/30 rounded-3xl shadow-lg p-6", className)}>
+  return <div className={twMerge("flex flex-col justify-between bg-white/70 backdrop-blur-xl border border-white/30 rounded-3xl shadow-lg p-6", className)}>
     {children}
   </div>
 
 }
 
-export const ProductCard = ({ item }: ProductCardProps) => {
+export const ProductCard = ({ item, phoneNumber }: ProductCardProps) => {
   const coverSlide = useMemo(
     () =>
       item?.mainImage ? { reference: item.mainImage, altText: item.name } : (item?.images && item.images.length > 0) ?
@@ -226,6 +227,15 @@ export const ProductCard = ({ item }: ProductCardProps) => {
               37% off
             </p> */}
           </div>
+        </div>
+
+        {/* Bu now button */}
+        <div className="w-full">
+          <WhatsAppButton
+            product={item}
+            phoneNumber={phoneNumber}
+            className="bg-blue-600 text-white hover:bg-blue-700 transition-colors rounded-xl p-3 font-semibold shadow-md hover:shadow-lg"
+          />
         </div>
       </Card>
     </Link>

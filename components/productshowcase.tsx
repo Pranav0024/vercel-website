@@ -20,8 +20,8 @@ export default function ProductShowcase({
   // product.mainImage is REQUIRED in shared Product type -> safe to use directly
   const carouselImages =
     product.images && product.images.length > 0
-      ? product.images
-      : [product.mainImage];
+      ? product.images.filter((img): img is string => typeof img === "string" && !!img)
+      : [product.mainImage].filter((img): img is string => typeof img === "string" && !!img);
 
   const nextImage = () =>
     setCurrentImage((prev) => (prev + 1) % carouselImages.length);

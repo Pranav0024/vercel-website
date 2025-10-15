@@ -23,13 +23,15 @@ export default function WhatsAppButton({
   const href = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, "")}?text=${text}`;
 
   return (
+    <div className="w-full">
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className={`${className ?? "inline-block"} w-full text-center`}
-    >
+      >
       {label}
     </a>
+      </div>
   );
 }
