@@ -4,13 +4,12 @@ import React, { useEffect, useState } from "react";
 import { Product } from "@/types/types"; // or "../types/types"
 import ProductShowcase from "./productshowcase";
 
-
 interface ProductGridProps {
-  apiEndpoint?: string;          // optional, default fetch URL
-  limit?: number;                // number of products to fetch/show
-  products?: Product[] | null;   // optional, can be passed from parent
-  loading?: boolean;             // optional, can be passed from parent
-  columns?: number;              // optional, default 4
+  apiEndpoint?: string; // optional, default fetch URL
+  limit?: number; // number of products to fetch/show
+  products?: Product[] | null; // optional, can be passed from parent
+  loading?: boolean; // optional, can be passed from parent
+  columns?: number; // optional, default 4
 }
 
 const ProductGrid: React.FC<ProductGridProps> = ({
@@ -20,7 +19,9 @@ const ProductGrid: React.FC<ProductGridProps> = ({
   loading: initialLoading,
   columns = 4,
 }) => {
-  const [products, setProducts] = useState<Product[] | null>(initialProducts || null);
+  const [products, setProducts] = useState<Product[] | null>(
+    initialProducts || null,
+  );
   const [loading, setLoading] = useState(initialLoading ?? true);
 
   useEffect(() => {
@@ -50,11 +51,11 @@ const ProductGrid: React.FC<ProductGridProps> = ({
         columns === 4
           ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
           : columns === 3
-          ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          : "grid-cols-1 sm:grid-cols-2"
+            ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            : "grid-cols-1 sm:grid-cols-2"
       }`}
     >
-      {(loading || !products || products.length === 0)
+      {loading || !products || products.length === 0
         ? shimmerPlaceholders.map((_, idx) => (
             <div
               key={idx}
@@ -69,7 +70,11 @@ const ProductGrid: React.FC<ProductGridProps> = ({
             </div>
           ))
         : products.map((product) => (
-            <ProductShowcase key={product.id} product={product} phoneNumber="918360746541"/>
+            <ProductShowcase
+              key={product.id}
+              product={product}
+              phoneNumber="918360746541"
+            />
           ))}
     </div>
   );

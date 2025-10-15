@@ -4,12 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 
-const images = [
-  "/1.png",
-  "/2.png",
-  "/3.png",
-  "/4.png",
-];
+const images = ["/1.png", "/2.png", "/3.png", "/4.png"];
 
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -50,7 +45,8 @@ const Hero = () => {
               INNOVATIVE TOOLS, ENDLESS POSSIBILITIES
             </h1>
             <p className="text-white max-sm:text-sm">
-              Bringing together a complete range of products crafted with innovation, style, and quality—explore them all today.
+              Bringing together a complete range of products crafted with
+              innovation, style, and quality—explore them all today.
             </p>
 
             <div className="flex gap-x-4 max-lg:flex-col max-lg:gap-y-3 mt-3">
@@ -73,37 +69,36 @@ const Hero = () => {
           </div>
         </div>
 
-{/* Right carousel panel */}
-<div className="col-span-12 lg:col-span-6 xl:col-span-7 flex justify-center mt-8 lg:mt-0">
-  <div
-    ref={cardRef}
-    onMouseMove={handleMouseMove}
-    onMouseLeave={handleMouseLeave}
-    className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-3xl shadow-xl p-6 w-[90%] max-w-lg sm:max-w-xl md:max-w-2xl h-[350px] sm:h-[450px] md:h-[550px] flex items-center justify-center relative overflow-hidden transition-transform duration-300 transform"
-    style={{
-      transform: `rotateX(${rotation.y}deg) rotateY(${rotation.x}deg)`,
-      boxShadow: `${shadow.x}px ${shadow.y}px 50px rgba(255,255,255,0.3)`,
-    }}
-  >
-    {images.map((src, index) => (
-      <div
-        key={index}
-        className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
-          index === currentImage ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <Image
-          src={src}
-          alt={`carousel-${index}`}
-          fill
-          className="object-contain rounded-2xl"
-          priority={index === 0}
-        />
-      </div>
-    ))}
-  </div>
-</div>
-
+        {/* Right carousel panel */}
+        <div className="col-span-12 lg:col-span-6 xl:col-span-7 flex justify-center mt-8 lg:mt-0">
+          <div
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="bg-white/20 backdrop-blur-lg border border-white/30 rounded-3xl shadow-xl p-6 w-[90%] max-w-lg sm:max-w-xl md:max-w-2xl h-[350px] sm:h-[450px] md:h-[550px] flex items-center justify-center relative overflow-hidden transition-transform duration-300 transform"
+            style={{
+              transform: `rotateX(${rotation.y}deg) rotateY(${rotation.x}deg)`,
+              boxShadow: `${shadow.x}px ${shadow.y}px 50px rgba(255,255,255,0.3)`,
+            }}
+          >
+            {images.map((src, index) => (
+              <div
+                key={index}
+                className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${
+                  index === currentImage ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={src}
+                  alt={`carousel-${index}`}
+                  fill
+                  className="object-contain rounded-2xl"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
