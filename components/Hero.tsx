@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 
-const images = ["/1.png", "/2.png", "/3.png", "/4.png"];
+const images = ["/Stucco Trowel.png", "/Block Brush.png", "/C-Brush.png", "/Thankyou cards Foldable white gold.jpg"];
 
 const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
