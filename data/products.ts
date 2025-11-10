@@ -99,6 +99,13 @@ const products: Product[] = [
     mainImage: "/Paniar Garden sprayer for multipurpuse with Adjustable flow.jpeg",
     link: "/shop/14",
       },
+{   
+    id: "15",
+    name: "TEXTURE SPRAYER GUN ",
+    price: "₹780",
+    mainImage: "/TEXTURE SPRAYER.png",
+    link: "/shop/15",
+      },   
 ]
 
 export default products;
