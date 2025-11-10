@@ -1,6 +1,13 @@
 import { Product } from "@/types/types";
 
 const products: Product[] = [
+  {   
+    id: "15",
+    name: "TEXTURE SPRAYER GUN ",
+    price: "₹780",
+    mainImage: "/TEXTURE SPRAYER.png",
+    link: "/shop/15",
+      },
   {
     id: "1",
     name: "Block Brush",
@@ -80,32 +87,26 @@ const products: Product[] = [
       },
 {
     id: "12",
-    name: " ThankYou Cards Foldable  Rating Review Cards(pack of 100)  ",
+    name: " ThankYou Cards (Pack of 100)  ",
     price: "₹289",
     mainImage: "/Thankyou cards Foldable white gold.jpg",
     link: "/shop/12",
       },
 {
     id: "13",
-    name: "Paniar Sprayer bottel",
+    name: "Paniar Sprayer Bottel",
     price: "₹399",
     mainImage: "/Paniar Garden Sprayer bottel with Adjustable Nozzle.png",
     link: "/shop/13",
       },
 {
     id: "14",
-    name: "Paniar Garden sprayer for multipurpuse with Adjustable Flow ",
+    name: "Paniar Pressure Sprayer Bottel",
     price: "₹399",
     mainImage: "/Paniar Garden sprayer for multipurpuse with Adjustable flow.png",
     link: "/shop/14",
       },
-{   
-    id: "15",
-    name: "TEXTURE SPRAYER GUN ",
-    price: "₹780",
-    mainImage: "/TEXTURE SPRAYER.png",
-    link: "/shop/15",
-      },   
+   
 ]
 
 export default products;
