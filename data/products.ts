@@ -99,12 +99,13 @@ const products: Product[] = [
     mainImage: "/Paniar Garden Sprayer bottel with Adjustable Nozzle.png",
     link: "/shop/13",
       },
-{
-    id: "14",
-    name: "Paniar Pressure Sprayer Bottel",
-    price: "₹399",
-    mainImage: "/Paniar Garden sprayer for multipurpuse with Adjustable flow.png",
-    link: "/shop/14",
+
+      {
+    id: "15",
+    name: "Mandala stencil",
+    price: "1₹ per square inch",
+    mainImage: "/Mandala stencil.png",
+    link: "/shop/15",
       },
    
 ]
