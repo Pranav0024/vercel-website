@@ -1,0 +1,80 @@
+{
+  "generator": "Built-in image generation; existing product photos used as references",
+  "images": [
+    {
+      "slug": "texture-sprayer",
+      "source": "TEXTURE SPRAYER.png",
+      "prompt": "Use case: compositing. Create one premium square editorial product photograph for a white and blue building-material dealer catalogue. Reference is exact product identity: red metal pneumatic texture hopper gun, white funnel hopper with integral side handle, silver trigger/nozzle. Preserve these shapes, colors and proportions precisely. Show a gloved craftsperson using this gun upright, white hopper above red gun, silver nozzle pointing towards a pale plaster wall with a subtle fine stippled texture; air hose connects below grip. Close composition centered on the complete recognizable gun, refined daylight, ivory wall and cool blue workwear, realistic modest application mist, high quality commercial photography. No new logos, no text overlays, no collages, no product redesign. Do not add the three loose accessory nozzles to the in-use gun."
+    },
+    {
+      "slug": "block-brush",
+      "source": "Block Brush.png",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Stage the exact wide cream-bristle block brush with brown wooden handle and rectangular metal ferrule on a pale plaster workbench beside a limewashed sample. Preserve its entire shape; no replacement modern plastic handle. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "stucco-trowel",
+      "source": "Stucco Trowel.png",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Stage the exact rectangular polished steel stucco trowel with cylindrical pale wooden handle resting against a subtle ivory Venetian plaster sample; brushed metal highlights, exact handle and blade shape. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "c-brush",
+      "source": "C-Brush.png",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Stage the exact unusual U/C-shaped brown wooden two-ended cream-bristle brush lying on a pale plaster slab beside a subtly brushed wall finish. Both bristle ends and curved wooden body must match reference, do not replace with conventional brush. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "comb-brush",
+      "source": "Comb Brush.png",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Stage the exact dark wood rectangular comb texture brush with long cream bristles on an ivory workbench next to a wet plaster sample with parallel comb texture. Preserve brush construction, no handle added. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "spatula-brush",
+      "source": "Spatula Brush.png",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Stage the exact compact pale wood rectangular hand block brush with cream bristles beside a pale lightly textured plaster sample. Preserve reference shape, no long handle added. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "garden-sprayer",
+      "source": "Paniar Garden Sprayer bottel with Adjustable Nozzle.png",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Stage the exact turquoise 2-litre MOON pump sprayer with dark gray handle and top pump on a white garden ledge with dew-covered leaves nearby and soft greenery background. Preserve turquoise body, dark gray assembly, turquoise nozzle and existing black MOON graphics, do not change label. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "mandala-stencil",
+      "source": "Mandala stencil.png",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Use the top-left circular floral mandala motif in the reference as a finished charcoal stencil pattern on a warm ivory textured wall in a tasteful quiet modern interior, side daylight, close enough to see pattern, small edge of blue chair at bottom, no text overlays. This is an illustrative application scene, not a physical stencil product shot; keep circular floral geometry recognizable. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "cards-green",
+      "source": "Thankyou Card white green.jpg",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Place this exact white/forest-green and gold botanical thank-you card as a real printed card lying on white tissue in a kraft shipping box, softly lit premium packing desk. Preserve entire reference card artwork, colors, proportions and exact words. Card is the focus, no new branding. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "cards-floral-heart",
+      "source": "thankyou cards flower heart.jpg",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Place this exact pastel flower and red-heart thank-you card as a real printed card on folded ivory tissue beside a kraft parcel, refined white packing desk. Preserve artwork and all wording exactly, keep card large and readable. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "cards-blue-fold",
+      "source": "thankyou cards foldable blue white.jpg",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Place the exact two-panel foldable thank-you card from reference partially open on a white packing desk, blue floral patterned panel and pale sage thank-you panel both visible. Preserve printed artwork, all text and proportions. Do not invent blank panels or new designs. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "cards-review-pink",
+      "source": "thankyou cards rating white pink.jpg",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Place this exact white and blush flower review/thank-you card as a real printed card inside an ivory tissue-lined parcel on white desk. Preserve artwork and all wording and five stars exactly. Card large and readable, no added labels. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "cards-pink-floral",
+      "source": "thankyou cards flowers pink.jpg",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Place this exact pink floral thank-you/review card as a real printed card on a small stack beside white tissue and kraft parcel. Preserve artwork, all wording including its grammar, and five stars exactly; do not redesign. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "cards-beige-floral",
+      "source": "thankyou cards beige flowers.jpg",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Place this exact beige floral thank-you card as real printed card resting on cream tissue beside a kraft parcel, close premium stationery photo. Preserve burgundy and pink flowers, heart and exact lettering. Card large and readable. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    },
+    {
+      "slug": "cards-gold-fold",
+      "source": "Thankyou cards Foldable white gold.jpg",
+      "prompt": "Use case: compositing. Asset: premium square product catalogue photograph for a white and blue dealer website. Edit target is the referenced existing product photo. Place this exact two-panel foldable card partially open on white packing desk, sage-white floral panel and white-gold framed review panel both visible. Preserve all printed wording and five gold stars, exact reference colors and artwork; no redesign. Professional commercial photography, soft daylight, realistic material detail and contact shadows, restrained styling, ivory and subtly cool neutral surroundings. Center complete product within generous 10% framing margin. One single photograph, no collage, no watermark, no added slogans, no invented accessories or performance claims. Match exact product identity from reference."
+    }
+  ]
+}

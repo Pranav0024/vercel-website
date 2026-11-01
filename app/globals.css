@@ -795,6 +795,28 @@ p {
   padding: 30px;
   mix-blend-mode: multiply;
 }
+.preview-image.preview-image-styled {
+  overflow: hidden;
+  height: auto;
+  aspect-ratio: 1;
+}
+.preview-image.preview-image-styled img {
+  padding: 0;
+  object-fit: cover;
+  mix-blend-mode: normal;
+}
+.preview-scene-label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 5px 9px;
+  border: 1px solid #ffffffa8;
+  border-radius: 20px;
+  background: #ffffffbd;
+  backdrop-filter: blur(16px);
+  color: #39506d;
+  font-size: 9px;
+}
 .product-number {
   position: absolute;
   top: 15px;
@@ -1246,6 +1268,22 @@ form p[role="status"] {
 .catalogue-card-info {
   padding: 22px 24px 27px;
 }
+.catalogue-image.product-gallery { overflow: hidden; isolation: isolate; height: auto; aspect-ratio: 1; }
+.product-gallery-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 650ms ease; pointer-events: none; }
+.product-gallery-slide.is-active { opacity: 1; }
+.catalogue-image .product-gallery-slide.is-styled img { padding: 0; object-fit: cover; mix-blend-mode: normal; }
+.catalogue-image .product-gallery-slide.is-original img { padding: 40px 32px 64px; object-fit: contain; mix-blend-mode: multiply; }
+.product-gallery .product-number { z-index: 2; top: 15px; right: 15px; left: auto; }
+.gallery-caption { position: absolute; z-index: 2; left: 14px; top: 14px; padding: 6px 10px; border: 1px solid #ffffffa8; border-radius: 20px; background: #ffffffbd; backdrop-filter: blur(16px); color: #39506d; font-size: 9px; letter-spacing: .03em; }
+.gallery-controls { position: absolute; z-index: 2; bottom: 13px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: 30px; border: 1px solid #ffffffd6; background: #ffffffcf; backdrop-filter: blur(18px); box-shadow: 0 4px 18px #1f46701a; }
+.gallery-controls button { display: grid; place-items: center; width: 32px; height: 32px; border: 0; background: transparent; border-radius: 50%; color: #25476f; cursor: pointer; }
+.gallery-controls button:hover { background: #dceafa; }
+.gallery-controls button:focus-visible { outline: 2px solid #1763bd; outline-offset: 1px; }
+.gallery-dots { display: flex; }
+.gallery-dots button { width: 25px; }
+.gallery-dots button span { width: 5px; height: 5px; border-radius: 6px; background: #7f98b6; transition: width .2s; }
+.gallery-dots button[aria-pressed="true"] span { width: 15px; background: #2168ba; }
+@media (prefers-reduced-motion: reduce) { .product-gallery-slide, .gallery-dots button span { transition: none; } }
 .catalogue-card-info .eyebrow {
   font-size: 8px;
 }

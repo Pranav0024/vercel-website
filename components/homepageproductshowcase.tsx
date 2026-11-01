@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { PublicProduct } from "@/lib/catalogue-types";
+import { productSlides } from "@/lib/product-imagery";
 
 export default function HomepageProductShowcase({
   products,
@@ -33,20 +34,23 @@ export default function HomepageProductShowcase({
         </div>
       </div>
       <div className="preview-grid">
-        {items.map((product, index) => (
+        {items.map((product, index) => {
+          const image = productSlides(product.mainImage)[0];
+          return (
           <Link
             className="product-preview glass-panel"
             key={product.id}
             href={"/shop?search=" + encodeURIComponent(product.name.trim())}
           >
-            <div className="preview-image">
+            <div className={`preview-image${image?.generated ? " preview-image-styled" : ""}`}>
               <span className="product-number">0{index + 1}</span>
               <Image
-                src={product.mainImage!}
-                alt={product.name.trim()}
+                src={image?.src || product.mainImage}
+                alt={`${product.name.trim()}${image?.generated ? " — AI-styled scene" : ""}`}
                 fill
                 sizes="(max-width: 600px) 50vw, 25vw"
               />
+              {image?.generated && <span className="preview-scene-label">AI-styled scene</span>}
               <span className="glass-icon">
                 <ArrowUpRight size={18} />
               </span>
@@ -62,7 +66,8 @@ export default function HomepageProductShowcase({
               <span className="muted">Product enquiries welcome</span>
             </div>
           </Link>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

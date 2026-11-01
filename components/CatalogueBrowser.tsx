@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import ProductGallery from "@/components/ProductGallery";
 import Link from "next/link";
 import { ArrowUpRight, Search, SlidersHorizontal, X } from "lucide-react";
 import { useSearchParams } from "next/navigation";
@@ -92,19 +92,7 @@ function Catalogue({
                 className="catalogue-card glass-panel"
                 key={product.id + product.name}
               >
-                <div className="catalogue-image">
-                  <span className="product-number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  {product.mainImage && (
-                    <Image
-                      src={product.mainImage}
-                      alt={product.name.trim()}
-                      fill
-                      sizes="(max-width: 540px) 90vw, (max-width: 950px) 45vw, 30vw"
-                    />
-                  )}
-                </div>
+                <ProductGallery key={product.mainImage} mainImage={product.mainImage} name={product.name.trim()} number={index + 1} />
                 <div className="catalogue-card-info">
                   <span className="eyebrow">{product.category}</span>
                   <h2>{product.name.trim()}</h2>
