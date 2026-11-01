@@ -1,0 +1,308 @@
+{
+  "version": 1,
+  "products": [
+    {
+      "id": "product-1",
+      "name": "TEXTURE SPRAYER GUN",
+      "price": "₹780",
+      "mainImage": "/TEXTURE SPRAYER.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-2",
+      "name": "Block Brush",
+      "price": "₹490",
+      "mainImage": "/Block Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-3",
+      "name": "Stucco Trowel",
+      "price": "₹660",
+      "mainImage": "/Stucco Trowel.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-4",
+      "name": "C-Brush",
+      "price": "₹430",
+      "mainImage": "/C-Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-5",
+      "name": "Comb Brush",
+      "price": "₹270",
+      "mainImage": "/Comb Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-6",
+      "name": "Spatula Brush",
+      "price": "₹120",
+      "mainImage": "/Spatula Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-7",
+      "name": "Thankyou Cards (Pack 0f 100)",
+      "price": "₹289",
+      "mainImage": "/Thankyou Card white green.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-8",
+      "name": "Thank You Cards (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards flower heart.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-9",
+      "name": "Thank You Cards  (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards foldable blue white.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-10",
+      "name": "Thank You Cards  (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards rating white pink.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-11",
+      "name": "Thank You Cards  (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards flowers pink.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-12",
+      "name": "Thankyou Cards (Pack 0f 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards beige flowers.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-13",
+      "name": "ThankYou Cards (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/Thankyou cards Foldable white gold.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-14",
+      "name": "Paniar Sprayer Bottel",
+      "price": "₹399",
+      "mainImage": "/Paniar Garden Sprayer bottel with Adjustable Nozzle.png",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-15",
+      "name": "Mandala stencil",
+      "price": "1₹ per square inch",
+      "mainImage": "/Mandala stencil.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": false
+    }
+  ],
+  "publishedProducts": [
+    {
+      "id": "product-1",
+      "name": "TEXTURE SPRAYER GUN",
+      "price": "₹780",
+      "mainImage": "/TEXTURE SPRAYER.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-2",
+      "name": "Block Brush",
+      "price": "₹490",
+      "mainImage": "/Block Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-3",
+      "name": "Stucco Trowel",
+      "price": "₹660",
+      "mainImage": "/Stucco Trowel.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-4",
+      "name": "C-Brush",
+      "price": "₹430",
+      "mainImage": "/C-Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": true
+    },
+    {
+      "id": "product-5",
+      "name": "Comb Brush",
+      "price": "₹270",
+      "mainImage": "/Comb Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-6",
+      "name": "Spatula Brush",
+      "price": "₹120",
+      "mainImage": "/Spatula Brush.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-7",
+      "name": "Thankyou Cards (Pack 0f 100)",
+      "price": "₹289",
+      "mainImage": "/Thankyou Card white green.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-8",
+      "name": "Thank You Cards (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards flower heart.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-9",
+      "name": "Thank You Cards  (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards foldable blue white.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-10",
+      "name": "Thank You Cards  (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards rating white pink.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-11",
+      "name": "Thank You Cards  (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards flowers pink.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-12",
+      "name": "Thankyou Cards (Pack 0f 100)",
+      "price": "₹289",
+      "mainImage": "/thankyou cards beige flowers.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-13",
+      "name": "ThankYou Cards (Pack of 100)",
+      "price": "₹289",
+      "mainImage": "/Thankyou cards Foldable white gold.jpg",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-14",
+      "name": "Paniar Sprayer Bottel",
+      "price": "₹399",
+      "mainImage": "/Paniar Garden Sprayer bottel with Adjustable Nozzle.png",
+      "category": "General products",
+      "description": "",
+      "published": true,
+      "featured": false
+    },
+    {
+      "id": "product-15",
+      "name": "Mandala stencil",
+      "price": "1₹ per square inch",
+      "mainImage": "/Mandala stencil.png",
+      "category": "Tools & application",
+      "description": "",
+      "published": true,
+      "featured": false
+    }
+  ],
+  "publishedAt": null
+}

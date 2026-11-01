@@ -1,3 +1,4 @@
+import { readPublicCatalogue } from "@/lib/catalogue-store";
 import Hero from "@/components/Hero";
 import IntroducingSection from "@/components/IntroducingSection";
 import HomepageProductShowcase from "@/components/homepageproductshowcase";
@@ -12,7 +13,9 @@ import {
   MoveRight,
 } from "lucide-react";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+export default async function Home() {
+  const catalogue = await readPublicCatalogue();
   return (
     <main id="main-content">
       <Hero />
@@ -73,7 +76,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <HomepageProductShowcase />
+      <HomepageProductShowcase products={catalogue} />
       <section className="process-section page-shell section-space">
         <div className="process-header">
           <span className="eyebrow">FROM A REQUIREMENT TO A WAY FORWARD</span>

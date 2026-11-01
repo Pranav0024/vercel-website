@@ -1,7 +1,7 @@
 # Paniar website
 
 Product catalogue built with Next.js 15, React 19, TypeScript, and Tailwind CSS 4.
-The home page and `/shop` use the catalogue in `data/products.ts` and product
+The home page and `/shop` use the published catalogue seeded by `data/catalogue.json` and product
 images in `public/`. Enquiries are sent through WhatsApp links.
 
 ## Local development
@@ -22,7 +22,8 @@ Use Node.js 22 and npm. Install dependencies with `npm ci`, then run
 
 - `app/`: pages, shared layout, and styles.
 - `components/`: shared UI used by the pages.
-- `data/` and `types/`: product catalogue and shared types.
+- `data/`: the initial draft and published catalogue snapshots.
+- `lib/`: catalogue validation, storage, shared types, and server-only admin helpers.
 - `public/`: product images and branding.
 - `tools/`: required lint compatibility bridge and dependency checks; see
   [tools/README.md](tools/README.md) before changing these.
@@ -36,6 +37,19 @@ The website now focuses on dealership, materials and sourcing enquiries. Existin
 product price data is retained, but the catalogue presents quotation-led enquiries.
 The enquiry form prepares a WhatsApp message for the visitor to review and send;
 it does not submit to a backend or send a message automatically.
+
+## Catalogue admin
+
+Run `npm run admin:setup` and visit `/admin`. Use the password in your ignored
+`.env.local` file. Add/edit/remove products, upload images and save drafts; use
+**Publish catalogue** only when ready to update the public site. Local-only mode
+persists in `.data/`; GitHub mode stores drafts and published snapshots in the
+separate private `Pranav0024/paniar-catalogue` repository. The public website
+source repo must not be used for private draft storage. See
+[ADMIN_SETUP.md](ADMIN_SETUP.md) for configuration. No paid database is
+used. Run `npm run test:admin` for isolated backend tests, and
+`npm run test:admin:http` for temporary-draft HTTP checks against a running local
+development server. The HTTP checks never publish and refuse GitHub storage.
 
 Architectural photography is illustrative, not a claim of completed Paniar projects.
 Locally saved source images:

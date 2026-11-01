@@ -7,7 +7,12 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "test:dependencies": "node --test tools/dependency-checks.test.mjs"
+    "test:dependencies": "node --test tools/dependency-checks.test.mjs",
+    "admin:setup": "node tools/setup-admin.mjs",
+    "test:admin": "node --test tools/admin.test.mjs",
+    "test:admin:http": "node tools/admin-http.test.mjs",
+    "catalogue:migrate": "node tools/migrate-catalogue.mjs",
+    "catalogue:verify": "node tools/verify-catalogue-connection.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.23.19",

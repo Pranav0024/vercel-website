@@ -1,9 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import products from "@/data/products";
+import type { PublicProduct } from "@/lib/catalogue-types";
 
-export default function HomepageProductShowcase() {
+export default function HomepageProductShowcase({
+  products,
+}: {
+  products: PublicProduct[];
+}) {
+  const featured = products.filter((product) => product.featured);
+  const items = (featured.length ? featured : products).slice(0, 4);
+  if (!items.length) return null;
   return (
     <section className="catalogue-preview section-space page-shell">
       <div className="section-heading">
@@ -26,7 +33,7 @@ export default function HomepageProductShowcase() {
         </div>
       </div>
       <div className="preview-grid">
-        {products.slice(0, 4).map((product, index) => (
+        {items.map((product, index) => (
           <Link
             className="product-preview glass-panel"
             key={product.id}
@@ -45,7 +52,7 @@ export default function HomepageProductShowcase() {
               </span>
             </div>
             <div className="preview-info">
-              <span className="eyebrow">TOOLS & APPLICATION</span>
+                <span className="eyebrow">{product.category}</span>
               <h3>
                 {product.name
                   .trim()
