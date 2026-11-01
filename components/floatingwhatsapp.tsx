@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import Image from "next/image";
 
 const FloatingWhatsApp: React.FC = () => {
   const whatsappNumber = "918360746541";
@@ -12,7 +11,6 @@ const FloatingWhatsApp: React.FC = () => {
   const [lastScrollY, setLastScrollY] = useState<number>(0);
   const [isPressed, setIsPressed] = useState<boolean>(false);
 
-  // Hide/show button on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
@@ -49,13 +47,6 @@ const FloatingWhatsApp: React.FC = () => {
         onTouchStart={() => setIsPressed(true)}
         onTouchEnd={() => setIsPressed(false)}
       >
-        {/* <Image
-          src="/whatsapp.png"
-          alt="WhatsApp"
-          width={50}
-          height={50}
-          priority
-        /> */}
         <FaWhatsapp
           size={50}
           className="text-green-500 drop-shadow-lg"

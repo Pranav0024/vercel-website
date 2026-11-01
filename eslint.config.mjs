@@ -1,6 +1,12 @@
+import "./tools/minimatch-compat.cjs";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { createRequire } from "node:module";
+
+// The legacy config's ESM build imports minimatch's removed default export.
+// Its CommonJS build uses the compatibility export loaded above instead.
+const load = createRequire(import.meta.url);
+const { FlatCompat } = load("@eslint/eslintrc");
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

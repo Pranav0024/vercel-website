@@ -14,29 +14,15 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Products", href: "/shop" },
     { name: "About", href: "/about" },
-    // { name: "Contact", href: "/contact" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full">
-      {/* Floating Shadow/Glass Behind Header */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute inset-0 bg-white/70 backdrop-blur-xl shadow-[0_5px_30px_rgba(0,0,0,0.05)]"></div>
       </div>
 
-      {/* Top Contact Bar */}
-      {/* <div className="hidden md:flex h-10 bg-blue-600 text-white text-sm items-center justify-between px-6 sm:px-12 max-w-7xl mx-auto relative z-20">
-        <div className="flex gap-6 items-center">
-          <span className="flex items-center gap-2">📞 +91 83607 46541</span>
-          <span className="flex items-center gap-2">
-            ✉️ paniar888@gmail.com
-          </span>
-        </div>  
-      </div> */}
-
-      {/* Main Navbar */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative z-20">
-        {/* Logo */}
         <Link
           href="/"
           className="flex items-center gap-3 transform transition-all duration-300 hover:scale-105"
@@ -51,7 +37,6 @@ export default function Header() {
           />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -64,10 +49,8 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* Vertical spacer */}
           <div className="h-[30px] bg-black/80 w-[2px] rounded-lg" />
 
-          {/* Add a contact section beside this */}
           <div className="inline-flex items-center justify-between gap-6 [&>*]:hover:opacity-80 [&>*]:transition-all [&>*]:duration-200 [&>*]:ease-in-out">
             <Link href={"mailto:paniar888@gmail.com"} className="text-blue-900">
               <IoMdMail className="text-2xl" />
@@ -79,7 +62,6 @@ export default function Header() {
 
         </nav>
 
-        {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden p-2 rounded-lg bg-white/40 hover:bg-white/60 transition-colors z-30 relative"
@@ -93,7 +75,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
@@ -104,7 +85,6 @@ export default function Header() {
             transition={{ duration: 0.3 }}
             className="md:hidden absolute top-full left-0 w-full bg-white/90 backdrop-blur-2xl border-b border-white/30 shadow-lg z-20"
           >
-            {/* Floating Blobs */}
             <div className="pointer-events-none absolute -top-16 -left-16 w-48 h-48 bg-blue-300/20 rounded-full filter blur-3xl animate-blob"></div>
             <div className="pointer-events-none absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300/20 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
 
