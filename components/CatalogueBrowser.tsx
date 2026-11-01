@@ -4,8 +4,6 @@ import { useState } from "react";
 import ProductGallery from "@/components/ProductGallery";
 import Link from "next/link";
 import { ArrowUpRight, Search, SlidersHorizontal, X } from "lucide-react";
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 import { CATEGORIES, type PublicProduct } from "@/lib/catalogue-types";
 import EnquiryBanner from "@/components/EnquiryBanner";
 
@@ -157,33 +155,16 @@ function Catalogue({
     </>
   );
 }
-function CatalogueRoute({ products }: { products: PublicProduct[] }) {
-  const params = useSearchParams();
-  const initialSearch = params.get("search") || "";
-  return (
-    <Catalogue
-      key={initialSearch}
-      initialSearch={initialSearch}
-      products={products}
-    />
-  );
-}
 export default function CatalogueBrowser({
   products,
+  initialSearch = "",
 }: {
   products: PublicProduct[];
+  initialSearch?: string;
 }) {
   return (
     <main id="main-content">
-      <Suspense
-        fallback={
-          <div className="page-shell subpage">
-            <p>Loading catalogue…</p>
-          </div>
-        }
-      >
-        <CatalogueRoute products={products} />
-      </Suspense>
+      <Catalogue key={initialSearch} initialSearch={initialSearch} products={products} />
     </main>
   );
 }
