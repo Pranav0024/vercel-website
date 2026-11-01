@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, Layers3, Package, Globe2 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Our story",
-  description:
-    "Get to know Paniar, a dealer for textures and building materials, and connect with us for import and export enquiries.",
-};
+export const metadata = pageMetadata("About Our Materials & Sourcing Business", "Learn about Paniar, a dealer in textures, building materials and application tools. Discuss product sourcing, bulk requirements and import-export enquiries.", "/about");
 
 export default function AboutPage() {
   return (

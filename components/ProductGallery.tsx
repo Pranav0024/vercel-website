@@ -57,7 +57,6 @@ export default function ProductGallery({ mainImage, name, number }: {
             onError={() => setFailed(previous => previous.includes(slide.src) ? previous : [...previous, slide.src])} />
         </div>
       ))}
-      {available[selected] && <span className="gallery-caption">{available[selected].generated ? "AI-styled scene" : "Original product photo"}</span>}
       {count > 1 && <div className="gallery-controls">
         <button type="button" aria-label={`Previous photo of ${name}`} onClick={() => choose(selected - 1)}><ChevronLeft size={15} /></button>
         <div className="gallery-dots">{available.map((slide, index) => <button key={slide.src} type="button" aria-label={`Show ${slide.label.toLowerCase()} of ${name}`} aria-pressed={selected === index} onClick={() => choose(index)}><span /></button>)}</div>

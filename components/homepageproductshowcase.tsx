@@ -50,7 +50,6 @@ export default function HomepageProductShowcase({
                 fill
                 sizes="(max-width: 600px) 50vw, 25vw"
               />
-              {image?.generated && <span className="preview-scene-label">AI-styled scene</span>}
               <span className="glass-icon">
                 <ArrowUpRight size={18} />
               </span>

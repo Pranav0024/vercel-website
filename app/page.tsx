@@ -64,7 +64,8 @@ export default async function Home() {
           </p>
           <p>
             Paniar brings these conversations together—across textures, building
-            materials, application tools and general product sourcing.
+            materials, texture spray guns, stucco trowels, application brushes
+            and general product sourcing.
           </p>
           <Link href="/about" className="text-link">
             Get to know Paniar <ArrowUpRight size={17} />

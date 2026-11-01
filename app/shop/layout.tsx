@@ -1,10 +1,6 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Product catalogue",
-  description:
-    "Browse Paniar’s application tools and products. Discuss availability, specifications and quotations, or share a sourcing requirement.",
-};
+export const metadata = pageMetadata("Catalogue: Texture Tools, Sprayers & Products", "Browse texture spray guns, stucco trowels, texture brushes, mandala stencils, garden sprayers and thank-you cards. Ask Paniar for availability and bulk quotations.", "/shop");
 
 export default function CatalogueLayout({
   children,

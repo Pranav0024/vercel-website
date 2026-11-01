@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, Search, SlidersHorizontal, X } from "lucide-react";
 import { CATEGORIES, type PublicProduct } from "@/lib/catalogue-types";
 import EnquiryBanner from "@/components/EnquiryBanner";
+import { productDescription } from "@/lib/product-copy";
 
 const categories = ["All products", ...CATEGORIES];
 function Catalogue({
@@ -88,6 +89,7 @@ function Catalogue({
             {filtered.map((product, index) => (
               <article
                 className="catalogue-card glass-panel"
+                id={`catalogue-${product.id}`}
                 key={product.id + product.name}
               >
                 <ProductGallery key={product.mainImage} mainImage={product.mainImage} name={product.name.trim()} number={index + 1} />
@@ -95,8 +97,7 @@ function Catalogue({
                   <span className="eyebrow">{product.category}</span>
                   <h2>{product.name.trim()}</h2>
                   <p>
-                    {product.description ||
-                      "Discuss specifications, quantities and availability."}
+                    {productDescription(product)}
                   </p>
                   <a
                     className="button button-glass"
