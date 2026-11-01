@@ -1,166 +1,189 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
-import React, { PropsWithChildren, useMemo } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { twMerge } from "tailwind-merge";
-import { CiStar } from "react-icons/ci";
-import { Camera } from "lucide-react";
+import { ArrowUpRight, Search, SlidersHorizontal, X } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import products from "@/data/products";
-import type { Product } from "@/types/types";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { useMouse } from "@/components/MouseContext";
+import EnquiryBanner from "@/components/EnquiryBanner";
 
-const ShopPage = () => {
-  const phoneNumber = "918360746541";
-  const mousePos = useMouse();
-
+const categories = ["All products", "Tools & application", "General products"];
+function Catalogue({ initialSearch }: { initialSearch: string }) {
+  const [search, setSearch] = useState(initialSearch);
+  const [category, setCategory] = useState(categories[0]);
+  const isTool = (name: string) =>
+    /brush|trowel|texture sprayer|stencil/i.test(name);
+  const filtered = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(search.trim().toLowerCase()) &&
+      (category === categories[0] ||
+        (category === categories[1]
+          ? isTool(product.name)
+          : !isTool(product.name))),
+  );
   return (
-    <div className="relative bg-white text-black py-16 overflow-hidden">
-      <div
-        className="pointer-events-none absolute -top-32 -left-32 w-72 h-72 bg-blue-300/20 rounded-full filter blur-3xl animate-blob transition-transform duration-500"
-        style={{
-          transform: `translate(${mousePos.x * 0.03}px, ${mousePos.y * 0.03}px)`,
-        }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-32 -right-32 w-96 h-96 bg-purple-300/20 rounded-full filter blur-3xl animate-blob animation-delay-2000 transition-transform duration-500"
-        style={{
-          transform: `translate(${mousePos.x * -0.02}px, ${mousePos.y * -0.02}px)`,
-        }}
-      />
-      <div
-        className="pointer-events-none absolute top-1/2 left-1/2 w-80 h-80 bg-pink-200/20 rounded-full filter blur-3xl animate-blob animation-delay-4000 transition-transform duration-500"
-        style={{
-          transform: `translate(${mousePos.x * -0.01}px, ${mousePos.y * 0.01}px)`,
-        }}
-      />
-
-      <div className="max-w-screen-2xl mx-auto px-6 relative z-10">
-        <h1 className="text-4xl font-bold mb-12 text-center uppercase tracking-widest text-gray-900">
-          Our Products
-        </h1>
-
-        {products.length === 0 ? (
-          <p className="text-center text-gray-500">No products available.</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {products.map((product) => (
-              <ProductCard key={product.id} item={product} phoneNumber={phoneNumber} />
+    <>
+      <section className="page-shell subpage catalogue-page">
+        <div className="page-intro">
+          <span className="eyebrow">EXPLORE THE POSSIBILITIES</span>
+          <h1>
+            Our catalogue.
+            <br />
+            <span className="blue-type">Your next starting point.</span>
+          </h1>
+          <p className="intro-copy">
+            Browse a selection of our tools and products. For textures, building
+            materials, bulk quantities or sourcing enquiries, let’s discuss your
+            requirement.
+          </p>
+        </div>
+        <div className="catalogue-toolbar glass-panel">
+          <div
+            className="category-tabs"
+            role="group"
+            aria-label="Product categories"
+          >
+            {categories.map((c) => (
+              <button
+                key={c}
+                type="button"
+                aria-pressed={category === c}
+                className={category === c ? "active" : ""}
+                onClick={() => setCategory(c)}
+              >
+                {c}
+              </button>
             ))}
           </div>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export interface ProductCardProps {
-  item: Product | null
-  phoneNumber: string
-}
-
-const Card: React.FC<PropsWithChildren & { className?: string }> = ({ children, className }) => {
-
-  return <div className={twMerge("flex flex-col justify-between bg-white/70 backdrop-blur-xl border border-white/30 rounded-3xl shadow-lg p-6", className)}>
-    {children}
-  </div>
-
-}
-
-export const ProductCard = ({ item, phoneNumber }: ProductCardProps) => {
-  const coverSlide = useMemo(
-    () =>
-      item?.mainImage ? { reference: item.mainImage, altText: item.name } : (item?.images && item.images.length > 0) ?
-        { reference: item.images[0] ?? null, altText: item.name } : null,
-    [item]
-  )
-
-  const strikeThroughPrice = useMemo(() => {
-    if (!item || !item.price) return null;
-    const price = item.price.slice(1).replaceAll(',', '');
-    if (Number.isNaN(price)) return null;
-    return Math.round(Number(price) * 1.3).toLocaleString("en-IN", { style: "currency", currency: "INR" });
-  }, [item])
-
-  const rating = useMemo(
-    () =>
-      item ? (Math.random() > 0.5 ? "4.5 (2.0K)" : "4.0 (1.5K)") : null, // Random rating for demo
-    [item]
-  )
-
-  const productRatings = useMemo(
-    () => (
-      <span className="inline-flex items-center gap-1">
-        {rating && rating.length > 0 && (
-          <>
-            <CiStar className="inline-block text-[#db2777] text-lg" />
-            <p className="inline-block text-xs text-[#db2777] sm:text-sm">
-              {rating || "4.5 (2.0K)"}
-            </p>
-          </>
-        )}
-      </span>
-    ),
-    [rating]
-  )
-
-  if (!item?.price) {
-    return null
-  }
-
-  return (
-    <Link
-      href="#"
-      className="h-full min-h-full w-full min-w-full cursor-pointer"
-    >
-      <Card
-        className="w-full max-w-full overflow-hidden"
-      >
-        <div className="relative aspect-[8/11] w-full max-w-full overflow-hidden">
-          {(coverSlide && coverSlide?.reference) ? <Image
-            width={300}
-            height={300}
-            src={coverSlide?.reference}
-            alt={coverSlide?.altText ?? "Card example background"}
-            className="z-0 h-full max-h-full w-full max-w-full object-contain rounded-lg p-4"
-          /> : <div className="z-0 h-full max-h-full w-full max-w-full flex items-center justify-center rounded-lg p-4">
-            <Camera className="bg-gray-200 text-gray-900 p-2 rounded-full text-lg" size={54} />
-          </div>}
-          <h2
-            className="absolute inset-0 top-auto flex py-2 font-bold items-center text-left leading-tight max-w-full whitespace-nowrap text-ellipsis"
-          >
-            {item?.name}
-          </h2>
+          <label className="catalogue-search">
+            <Search size={18} />
+            <span className="sr-only">Search products</span>
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Find a product…"
+            />
+            {search && (
+              <button
+                type="button"
+                aria-label="Clear search"
+                onClick={() => setSearch("")}
+              >
+                <X size={16} />
+              </button>
+            )}
+          </label>
         </div>
-
-        <div className="flex flex-col min-w-full max-w-full flex-wrap py-2.5">
-          <h6 className="text-left text-sm font-light">
-            {productRatings}
-          </h6>
-          <div className="flex flex-row items-center">
-            <p className="text-sm mr-2 text-black/70">from </p>
-            <p className="text-sm mr-2 text-gray-500">
-              <span className="line-through ">{strikeThroughPrice}</span>
-            </p>
-            <span className="font-bold text-dark-1 text-sm text-green-600">
-              {item?.price}
-            </span>
+        <div className="catalogue-summary">
+          <span>
+            {filtered.length} product{filtered.length !== 1 ? "s" : ""}
+          </span>
+          <span>
+            <SlidersHorizontal size={14} /> Availability & quotations on enquiry
+          </span>
+        </div>
+        {filtered.length ? (
+          <div className="catalogue-grid">
+            {filtered.map((product, index) => (
+              <article
+                className="catalogue-card glass-panel"
+                key={product.id + product.name}
+              >
+                <div className="catalogue-image">
+                  <span className="product-number">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  {product.mainImage && (
+                    <Image
+                      src={product.mainImage}
+                      alt={product.name.trim()}
+                      fill
+                      sizes="(max-width: 540px) 90vw, (max-width: 950px) 45vw, 30vw"
+                    />
+                  )}
+                </div>
+                <div className="catalogue-card-info">
+                  <span className="eyebrow">
+                    {isTool(product.name) ? categories[1] : categories[2]}
+                  </span>
+                  <h2>{product.name.trim()}</h2>
+                  <p>Discuss specifications, quantities and availability.</p>
+                  <a
+                    className="button button-glass"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={
+                      "https://wa.me/918968310500?text=" +
+                      encodeURIComponent(
+                        "Hello Paniar, I’d like to enquire about " +
+                          product.name.trim() +
+                          " (Reference " +
+                          product.id +
+                          "). Catalogue design: " +
+                          (product.mainImage
+                            ?.split("/")
+                            .pop()
+                            ?.replace(/\.[^.]+$/, "") || product.name.trim()) +
+                          ". Please share availability and quotation details.",
+                      )
+                    }
+                  >
+                    Enquire about this product <ArrowUpRight size={17} />
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
-        </div>
-
-        <div className="w-full">
-          <WhatsAppButton
-            product={item}
-            phoneNumber={phoneNumber}
-            className="bg-blue-600 text-white hover:bg-blue-700 transition-colors rounded-xl p-3 font-semibold shadow-md hover:shadow-lg"
-          />
-        </div>
-      </Card>
-    </Link>
-  )
+        ) : (
+          <div className="empty-state glass-panel">
+            <Search size={30} />
+            <h2>No matching products</h2>
+            <p>Try another search, or tell us what you’re looking for.</p>
+            <button
+              className="button button-glass"
+              type="button"
+              onClick={() => {
+                setSearch("");
+                setCategory(categories[0]);
+              }}
+            >
+              Reset filters
+            </button>
+            <Link className="text-link" href="/contact">
+              Ask about a product <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        )}
+        <p className="catalogue-note">
+          Looking for something beyond this selection?{" "}
+          <Link href="/contact">
+            Share your sourcing requirement <ArrowUpRight size={15} />
+          </Link>
+        </p>
+      </section>
+      <EnquiryBanner />
+    </>
+  );
 }
-
-export default ShopPage;
+function CatalogueRoute() {
+  const params = useSearchParams();
+  const initialSearch = params.get("search") || "";
+  return <Catalogue key={initialSearch} initialSearch={initialSearch} />;
+}
+export default function ShopPage() {
+  return (
+    <main id="main-content">
+      <Suspense
+        fallback={
+          <div className="page-shell subpage">
+            <p>Loading catalogue…</p>
+          </div>
+        }
+      >
+        <CatalogueRoute />
+      </Suspense>
+    </main>
+  );
+}

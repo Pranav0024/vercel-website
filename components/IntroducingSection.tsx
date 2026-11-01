@@ -1,29 +1,109 @@
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
+import { ArrowUpRight, Globe2, Layers3, PackageSearch } from "lucide-react";
 
-const IntroducingSection = () => {
+export default function IntroducingSection() {
   return (
-    <div className="bg-gradient-to-l from-white to-blue-600 py-32 sm:py-24 px-6 sm:px-10">
-      <div className="text-center flex flex-col gap-y-6 items-center">
-        <h2 className="text-white text-6xl sm:text-8xl font-extrabold text-center mb-4 max-md:text-5xl max-[480px]:text-4xl">
-          INTRODUCING <span className="text-black">PAN</span>
-          <span className="text-blue-600">IAR</span>
-        </h2>
-        <p className="text-white text-center text-2xl sm:text-2xl font-semibold max-md:text-xl max-[480px]:text-base">
-          One Stop Shop For Your Every Day Needs.
+    <section
+      id="expertise"
+      className="expertise-section page-shell section-space"
+    >
+      <div className="section-heading">
+        <div>
+          <span className="eyebrow">ONE NAME. MANY POSSIBILITIES.</span>
+          <h2>
+            Different needs.
+            <br />
+            <span className="blue-type">Connected by Paniar.</span>
+          </h2>
+        </div>
+        <p>
+          For the spaces you create, the projects you build and the products
+          your business needs.
         </p>
-
+      </div>
+      <div className="division-grid">
         <Link
-          href="/shop"
-          className="group w-80 sm:w-96 max-md:w-72 max-[480px]:w-60 mt-4 transition-all duration-300"
+          href="/contact?interest=Textures"
+          className="division-card glass-panel division-featured"
         >
-          <button className="bg-white/20 backdrop-blur-md border border-white/30 px-10 py-3 rounded-2xl text-blue-600 font-bold hover:bg-white/30 hover:scale-105 transition-all duration-300 w-full">
-            SHOP NOW
-          </button>
+          <div className="division-art texture-art">
+            <Image
+              src="/images/interior-detail.jpg"
+              alt="Natural finishes and tactile materials in a contemporary living space"
+              fill
+              sizes="(max-width: 760px) 100vw, 45vw"
+            />
+            <span className="division-index glass-panel">01 / SURFACES</span>
+            <span className="glass-icon card-arrow">
+              <ArrowUpRight size={20} />
+            </span>
+          </div>
+          <div className="division-copy">
+            <Layers3 size={22} />
+            <h3>Textures & finishes</h3>
+            <p>
+              Bring depth and character to your spaces. Let’s find the right
+              finish for your vision.
+            </p>
+            <span className="text-link">
+              Explore the possibilities <ArrowUpRight size={16} />
+            </span>
+          </div>
+        </Link>
+        <Link
+          href="/contact?interest=Building%20materials"
+          className="division-card glass-panel"
+        >
+          <div className="division-art materials-art" aria-hidden="true">
+            <span className="division-index glass-panel">02 / FOUNDATIONS</span>
+            <div className="material-slab slab-one" />
+            <div className="material-slab slab-two" />
+            <div className="material-slab slab-three" />
+            <span className="glass-icon card-arrow">
+              <ArrowUpRight size={20} />
+            </span>
+          </div>
+          <div className="division-copy">
+            <PackageSearch size={22} />
+            <h3>Building materials</h3>
+            <p>
+              Material enquiries, project requirements and application tools.
+              All in one conversation.
+            </p>
+            <span className="text-link">
+              Tell us what you need <ArrowUpRight size={16} />
+            </span>
+          </div>
+        </Link>
+        <Link
+          href="/contact?interest=Imports%20%26%20exports"
+          className="division-card glass-panel"
+        >
+          <div className="division-art trade-art" aria-hidden="true">
+            <span className="division-index glass-panel">03 / CONNECTIONS</span>
+            <div className="globe-orbit">
+              <Globe2 strokeWidth={0.65} />
+            </div>
+            <span className="orbit-dot" />
+            <span className="trade-art-label">A WORLD OF OPPORTUNITY</span>
+            <span className="glass-icon card-arrow">
+              <ArrowUpRight size={20} />
+            </span>
+          </div>
+          <div className="division-copy">
+            <Globe2 size={22} />
+            <h3>Imports & exports</h3>
+            <p>
+              Looking beyond the familiar. Discuss product sourcing and
+              cross-border trade requirements.
+            </p>
+            <span className="text-link">
+              Start a conversation <ArrowUpRight size={16} />
+            </span>
+          </div>
         </Link>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default IntroducingSection;
+}

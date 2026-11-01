@@ -29,3 +29,16 @@ Use Node.js 22 and npm. Install dependencies with `npm ci`, then run
 
 `node_modules/`, `.next/`, and `next-env.d.ts` are generated locally. They are
 needed while developing but are excluded from version control.
+
+## Redesign notes
+
+The website now focuses on dealership, materials and sourcing enquiries. Existing
+product price data is retained, but the catalogue presents quotation-led enquiries.
+The enquiry form prepares a WhatsApp message for the visitor to review and send;
+it does not submit to a backend or send a message automatically.
+
+Architectural photography is illustrative, not a claim of completed Paniar projects.
+Locally saved source images:
+
+- https://images.unsplash.com/photo-1600607687939-ce8a6c25118c
+- https://images.unsplash.com/photo-1600210492486-724fe5c67fb0
