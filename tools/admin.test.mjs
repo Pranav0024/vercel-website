@@ -182,7 +182,7 @@ test("draft edits persist but remain private until publish; deletions follow the
   assert.equal(view.hasUnpublishedChanges, false);
   const published = await store.readPublicCatalogue();
   assert.equal(published.length, count + 1);
-  assert.equal(Object.hasOwn(published.at(-1), "price"), false);
+  assert.equal(published.at(-1).price, added.price);
   view = await store.saveDraft(
     view.products.filter((p) => p.id !== added.id),
     view.revision,
@@ -380,4 +380,82 @@ test("GitHub storage refuses public repositories before reading or writing catal
     process.env.CATALOGUE_STORAGE = "local";
     delete process.env.CATALOGUE_GITHUB_TOKEN;
   }
+});
+
+test("50 variations survive draft and publish, and variation images follow publication", async () => {
+  const snap = await store.readCatalogue();
+  const url = await store.saveImage(Buffer.from([137,80,78,71,13,10,26,10,0,0,0,0]));
+  const variations = Array.from({ length: 50 }, (_, i) => ({ id: `design-${i}`, name: `Design ${i}`, size: "12 inches", price: `₹${i + 100}`, mainImage: i ? "" : url }));
+  const product = { ...snap.document.products[0], id: "variation-qa", variations };
+  let view = await store.saveDraft([...snap.document.products, product], snap.revision);
+  assert.equal((await store.readPublicCatalogue()).some(p => p.id === product.id), false);
+  await assert.rejects(store.readImage(url.split("/").at(-1)), { status: 404 });
+  view = await store.publishCatalogue(view.revision);
+  assert.deepEqual((await store.readPublicCatalogue()).find(p => p.id === product.id).variations, variations);
+  assert.ok(await store.readImage(url.split("/").at(-1)));
+  for (const invalid of [[variations[0], variations[0]], [{ ...variations[0], mainImage: "/../secret.png" }], Array.from({length:201}, (_,i)=>({...variations[0],id:`v${i}`}))]) {
+    assert.throws(() => validation.validateProducts([{...product, variations:invalid}]), {status:400});
+  }
+  view = await store.saveDraft(view.products.filter(p => p.id !== product.id), view.revision);
+  await store.publishCatalogue(view.revision);
+  await assert.rejects(store.readImage(url.split("/").at(-1)), { status: 404 });
+});
+test("legacy mandala split is idempotent and preserves custom edits", () => {
+  const product = {id:"product-15",name:"Mandala stencil",price:"₹1 / square inch",mainImage:"/Mandala stencil.png",category:"Tools & application",description:"",published:true,featured:false};
+  const split = validation.separateMandala([product]);
+  assert.equal(split.length,2);
+  assert.equal(split[0].name,"Round Mandala Stencils");
+  assert.equal(split[1].name,"Square Mandala Stencils");
+  assert.deepEqual(validation.separateMandala(split),split);
+  assert.deepEqual(validation.separateMandala([{...product,name:"Custom mandala"}]),[{...product,name:"Custom mandala"}]);
+});
+
+test("public reads can use a recent published snapshot during a storage outage; admin reads fail closed", async () => {
+  const originalFetch = globalThis.fetch;
+  process.env.CATALOGUE_STORAGE = "github";
+  process.env.CATALOGUE_GITHUB_TOKEN = "outage-test-token";
+  let fail = false;
+  const doc = JSON.parse(await readFile(new URL("../data/catalogue.json", import.meta.url), "utf8"));
+  globalThis.fetch = async url => {
+    if (fail) throw new Error("offline");
+    if (!String(url).includes("/contents/")) return Response.json({private:true});
+    return Response.json({sha:"outage-sha",content:Buffer.from(JSON.stringify(doc)).toString("base64")});
+  };
+  try {
+    const published = await store.readPublicCatalogue();
+    fail = true;
+    await assert.rejects(store.readCatalogue(true), {status:503});
+    assert.deepEqual(await store.readPublicCatalogue(),published);
+  } finally {
+    globalThis.fetch = originalFetch;
+    process.env.CATALOGUE_STORAGE = "local";
+    delete process.env.CATALOGUE_GITHUB_TOKEN;
+  }
+});
+
+test("display order survives save/publish, preserves product edits and keeps drafts private", async () => {
+  const snapshot = await store.readCatalogue();
+  const before = await store.readPublicCatalogue();
+  const products = snapshot.document.products.map((p, i) => ({ ...p, rank: i ? 10 : 100 }));
+  products[1] = { ...products[1], name: "Keep my edited product name", price: "₹1234", description: "Keep my product details" };
+  let view = await store.saveDraft(products, snapshot.revision);
+  assert.deepEqual(await store.readPublicCatalogue(), before);
+  assert.deepEqual((await store.readCatalogue()).document.products, products);
+  view = await store.publishCatalogue(view.revision);
+  const published = await store.readPublicCatalogue();
+  assert.equal(published[0].id, products[1].id);
+  assert.equal(published.at(-1).id, products[0].id);
+  assert.equal(published[0].name, products[1].name);
+  assert.equal(published[0].price, products[1].price);
+  assert.equal(published[0].description, products[1].description);
+  for (const rank of [0, -1, 1.5, 10000, "10", null]) {
+    assert.throws(() => validation.validateProducts([{ ...products[0], rank }]), { status:400 });
+  }
+  const { orderProducts } = load(path.join(directory,"lib/catalogue-types.js"));
+  const unsorted = [{id:"unranked-a"},{id:"late",rank:100},{id:"early",rank:10},{id:"tied",rank:10},{id:"unranked-b"}];
+  const original = structuredClone(unsorted);
+  assert.deepEqual(orderProducts(unsorted).map(p=>p.id),["early","tied","late","unranked-a","unranked-b"]);
+  assert.deepEqual(unsorted,original);
+  view = await store.saveDraft(snapshot.document.products, view.revision);
+  await store.publishCatalogue(view.revision);
 });

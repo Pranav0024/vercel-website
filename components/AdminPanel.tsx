@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import VariationEditor from "./VariationEditor";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -16,7 +17,7 @@ import {
   Send,
   X,
 } from "lucide-react";
-import { CATEGORIES, type CatalogueProduct } from "@/lib/catalogue-types";
+import { CATEGORIES, orderProducts, type CatalogueProduct } from "@/lib/catalogue-types";
 
 type Catalogue = {
   products: CatalogueProduct[];
@@ -252,7 +253,7 @@ export default function AdminPanel() {
     });
   }
 
-  async function upload(file: File | undefined) {
+  async function upload(file: File | undefined, variationId?: string) {
     if (!file || !draft) return;
     if (
       !["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
@@ -270,14 +271,14 @@ export default function AdminPanel() {
           "The upload did not return an image URL. Please try again.",
         );
       setDraft((current) =>
-        current ? { ...current, mainImage: data.url } : current,
+        current ? variationId ? { ...current, variations: (current.variations ?? []).map(v => v.id === variationId ? { ...v, mainImage: data.url } : v) } : { ...current, mainImage: data.url } : current,
       );
       setNotice("Image uploaded. Save the draft to attach it to this product.");
     });
   }
 
   const products = catalogue?.products ?? [];
-  const visible = products.filter(
+  const visible = orderProducts(products).filter(
     (product) =>
       `${product.name} ${product.description}`
         .toLowerCase()
@@ -596,6 +597,7 @@ export default function AdminPanel() {
                     <div className="admin-product-info">
                       <h3>{product.name}</h3>
                       <p>{product.category}</p>
+                      <p>Display order: {product.rank ?? "Not set"}</p>
                       <div className="admin-tags">
                         <span
                           className={`admin-pill ${!product.published ? "admin-hidden" : ""}`}
@@ -610,8 +612,8 @@ export default function AdminPanel() {
                       </div>
                     </div>
                     <div className="admin-product-price">
-                      {product.price || "No internal price"}
-                      <span>Internal price</span>
+                      {product.price || "Price on enquiry"}
+                      <span>Public price</span>
                     </div>
                     <div className="admin-row-actions">
                       <button
@@ -706,8 +708,26 @@ export default function AdminPanel() {
                       ))}
                     </select>
                   </label>
+                  <label htmlFor="product-rank">
+                    Display order <span className="admin-optional">(optional)</span>
+                    <input
+                      id="product-rank"
+                      type="number"
+                      min={1}
+                      max={9999}
+                      step={1}
+                      value={draft.rank ?? ""}
+                      onChange={(event) => setDraft({ ...draft, rank: event.target.value === "" ? undefined : Number(event.target.value) })}
+                      placeholder="e.g. 10"
+                    />
+                    <span className="admin-help">
+                      Lower numbers appear first: try 10 for mandalas, 100 for cards.
+                      Blank items follow numbered items in their existing order.
+                      Equal numbers keep their existing order. Featured items use this order on the home page.
+                    </span>
+                  </label>
                   <label htmlFor="product-price">
-                    Internal price{" "}
+                    Public price{" "}
                     <span className="admin-optional">(optional)</span>
                     <input
                       id="product-price"
@@ -718,7 +738,7 @@ export default function AdminPanel() {
                       placeholder="e.g. ₹1,200 / unit"
                     />
                     <span className="admin-help">
-                      An optional internal reference.
+                      Shown publicly after publishing.
                     </span>
                   </label>
                   <label htmlFor="product-image">
@@ -770,6 +790,7 @@ export default function AdminPanel() {
                       placeholder="Materials, finishes, applications and useful details…"
                     />
                   </label>
+                  <VariationEditor variations={draft.variations ?? []} onChange={variations => setDraft({ ...draft, variations })} upload={(file, id) => void upload(file, id)} />
                   <div className="admin-toggles admin-full">
                     <label htmlFor="product-visible">
                       <input

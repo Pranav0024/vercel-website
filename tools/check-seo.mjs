@@ -14,7 +14,9 @@ assert.match(robots, /Disallow: \/admin/);
 assert.match(robots, /Disallow: \/api\//);
 assert.ok(robots.includes(`${canonical}/sitemap.xml`));
 const sitemap = await get("/sitemap.xml");
-assert.equal((sitemap.match(/<loc>/g) || []).length, 4);
+const products = JSON.parse(await get("/api/catalogue")).products;
+assert.equal((sitemap.match(/<loc>/g) || []).length, 4 + products.length);
+for (const product of products) assert.ok(sitemap.includes(`${canonical}/shop/${encodeURIComponent(product.id)}`));
 assert.ok(!sitemap.includes("/admin"));
 const titles = new Set();
 for (const route of ["/", "/shop", "/about", "/contact"]) {
@@ -35,7 +37,7 @@ for (const route of ["/", "/shop", "/about", "/contact"]) {
     const collection = data.find(value => value["@type"] === "CollectionPage");
     assert.ok(collection?.mainEntity.numberOfItems > 0);
     assert.equal(collection.mainEntity.itemListElement.length, collection.mainEntity.numberOfItems);
-    assert.ok(collection.mainEntity.itemListElement.every(item => html.includes(`id="${new URL(item.item.url).hash.slice(1)}"`)));
+    assert.ok(collection.mainEntity.itemListElement.every(item => products.some(product => new URL(item.item.url).pathname === `/shop/${encodeURIComponent(product.id)}`)));
   }
   console.log(`${route}: metadata and structured data passed`);
 }

@@ -1,3 +1,4 @@
+import { productUrl } from "@/lib/product-details";
 import CatalogueBrowser from "@/components/CatalogueBrowser";
 import { readPublicCatalogue } from "@/lib/catalogue-store";
 import { SITE_URL, jsonLd } from "@/lib/seo";
@@ -23,7 +24,7 @@ export default async function ShopPage({
       mainEntity: { "@type": "ItemList", numberOfItems: listed.length, itemListElement: listed.map((product, index) => ({
         "@type": "ListItem", position: index + 1, item: {
           "@type": "Thing", name: product.name.trim(), description: productDescription(product),
-          url: `${SITE_URL}/shop#catalogue-${encodeURIComponent(product.id)}`,
+          url: `${SITE_URL}${productUrl(product)}`,
           image: new URL(productSlides(product.mainImage)[0]?.src || product.mainImage, SITE_URL).href,
         },
       })) },

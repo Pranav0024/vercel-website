@@ -3,10 +3,12 @@ import path from "node:path";
 import { createHash, randomUUID } from "node:crypto";
 import seed from "../data/catalogue.json";
 import type { CatalogueDocument, PublicProduct } from "./catalogue-types";
+import { orderProducts } from "./catalogue-types";
 import {
   CatalogueError,
   imageExtension,
   validateProducts,
+  separateMandala,
 } from "./catalogue-validation";
 
 const initial = seed as CatalogueDocument;
@@ -120,8 +122,8 @@ function parseDocument(text: string): CatalogueDocument {
       throw new Error();
     return {
       version: 1,
-      products: validateProducts(doc.products),
-      publishedProducts: validateProducts(doc.publishedProducts),
+      products: separateMandala(validateProducts(doc.products)),
+      publishedProducts: separateMandala(validateProducts(doc.publishedProducts)),
       publishedAt: doc.publishedAt,
     };
   } catch {
@@ -148,7 +150,7 @@ function remoteKey() {
 export async function readCatalogue(fresh = false): Promise<Snapshot> {
   const storage = storageMode();
   if (storage === "readonly")
-    return { document: initial, revision: revisionOf(seedText()), storage };
+    return { document: parseDocument(seedText()), revision: revisionOf(seedText()), storage };
   if (storage === "github") {
     const key = remoteKey();
     if (!fresh && remoteCache?.key === key && remoteCache.expires > Date.now())
@@ -207,9 +209,21 @@ export function adminView(snapshot: Awaited<ReturnType<typeof readCatalogue>>) {
       JSON.stringify(snapshot.document.publishedProducts),
   };
 }
+let lastPublicCatalogue: { key: string; expires: number; products: PublicProduct[] } | undefined;
 export async function readPublicCatalogue(): Promise<PublicProduct[]> {
+  const key = storageMode() === "github" ? remoteKey() : root();
+  try {
+    const products = await loadPublicCatalogue();
+    lastPublicCatalogue = { key, expires: Date.now() + 5 * 60 * 1000, products };
+    return products;
+  } catch (error) {
+    if (storageMode() === "github" && lastPublicCatalogue?.key === key && lastPublicCatalogue.expires > Date.now()) return lastPublicCatalogue.products;
+    throw error;
+  }
+}
+async function loadPublicCatalogue(): Promise<PublicProduct[]> {
   const { document } = await readCatalogue();
-  return document.publishedProducts
+  return orderProducts(document.publishedProducts)
     .filter((p) => p.published)
     .map((p) => ({
       id: p.id,
@@ -218,6 +232,9 @@ export async function readPublicCatalogue(): Promise<PublicProduct[]> {
       category: p.category,
       description: p.description,
       featured: p.featured,
+      rank: p.rank,
+      price: p.price,
+      variations: p.variations ?? [],
     }));
 }
 async function mutate(
@@ -366,7 +383,7 @@ export async function readImage(
     const publicProducts = await readPublicCatalogue();
     if (
       !publicProducts.some(
-        (p) => p.mainImage === "/api/catalogue/images/" + name,
+        (p) => p.mainImage === "/api/catalogue/images/" + name || p.variations?.some(v => v.mainImage === "/api/catalogue/images/" + name),
       )
     )
       throw new CatalogueError("Image not found.", 404);

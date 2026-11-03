@@ -8,6 +8,7 @@ import { CATEGORIES, type PublicProduct } from "@/lib/catalogue-types";
 import EnquiryBanner from "@/components/EnquiryBanner";
 import { productDescription } from "@/lib/product-copy";
 
+import { displayPrice, productUrl } from "@/lib/product-details";
 const categories = ["All products", ...CATEGORIES];
 function Catalogue({
   initialSearch,
@@ -95,7 +96,9 @@ function Catalogue({
                 <ProductGallery key={product.mainImage} mainImage={product.mainImage} name={product.name.trim()} number={index + 1} />
                 <div className="catalogue-card-info">
                   <span className="eyebrow">{product.category}</span>
-                  <h2>{product.name.trim()}</h2>
+                  <h2><Link href={productUrl(product)}>{product.name.trim()}</Link></h2>
+<strong className="product-price">{displayPrice(product)}</strong>
+<Link className="text-link" href={productUrl(product)}>View product & options <ArrowUpRight size={16} /></Link>
                   <p>
                     {productDescription(product)}
                   </p>

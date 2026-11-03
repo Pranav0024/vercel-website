@@ -26,19 +26,7 @@ function text(
   }
   return value.trim();
 }
-export function validateProducts(value: unknown): CatalogueProduct[] {
-  if (!Array.isArray(value) || value.length > 1000)
-    throw new CatalogueError("Use a catalogue of up to 1,000 products.");
-  const ids = new Set<string>();
-  return value.map((raw) => {
-    if (!raw || typeof raw !== "object")
-      throw new CatalogueError("Invalid product.");
-    const p = raw as Record<string, unknown>;
-    const id = text(p.id, "Product reference", 80, true);
-    if (!/^[a-zA-Z0-9_-]+$/.test(id) || ids.has(id))
-      throw new CatalogueError("Product references must be unique.");
-    ids.add(id);
-    const mainImage = text(p.mainImage, "Image path", 500);
+function validateImagePath(mainImage: string) {
     if (mainImage) {
       let decoded: string;
       try {
@@ -65,6 +53,23 @@ export function validateProducts(value: unknown): CatalogueProduct[] {
       )
         throw new CatalogueError("Invalid uploaded image path.");
     }
+}
+export function validateProducts(value: unknown): CatalogueProduct[] {
+  if (!Array.isArray(value) || value.length > 1000)
+    throw new CatalogueError("Use a catalogue of up to 1,000 products.");
+  const ids = new Set<string>();
+  return value.map((raw) => {
+    if (!raw || typeof raw !== "object")
+      throw new CatalogueError("Invalid product.");
+    const p = raw as Record<string, unknown>;
+    if (p.rank !== undefined && (typeof p.rank !== "number" || !Number.isInteger(p.rank) || p.rank < 1 || p.rank > 9999))
+      throw new CatalogueError("Display order must be a whole number between 1 and 9,999, or left blank.");
+    const id = text(p.id, "Product reference", 80, true);
+    if (!/^[a-zA-Z0-9_-]+$/.test(id) || ids.has(id))
+      throw new CatalogueError("Product references must be unique.");
+    ids.add(id);
+    const mainImage = text(p.mainImage, "Image path", 500);
+    validateImagePath(mainImage);
     const category = text(p.category, "Category", 80, true);
     if (!(CATEGORIES as readonly string[]).includes(category))
       throw new CatalogueError("Choose a supported category.");
@@ -74,7 +79,22 @@ export function validateProducts(value: unknown): CatalogueProduct[] {
       throw new CatalogueError(
         "Visible products need an image. Upload one or provide a local image path.",
       );
+    const variationIds = new Set<string>();
+    const rawVariations = p.variations ?? [];
+    if (!Array.isArray(rawVariations) || rawVariations.length > 200) throw new CatalogueError("Use up to 200 variations per product.");
+    const variations = rawVariations.map((raw) => {
+      if (!raw || typeof raw !== "object") throw new CatalogueError("Invalid variation.");
+      const v = raw as Record<string, unknown>;
+      const variationId = text(v.id, "Variation reference", 80, true);
+      if (!/^[a-zA-Z0-9_-]+$/.test(variationId) || variationIds.has(variationId)) throw new CatalogueError("Variation references must be unique within each product.");
+      variationIds.add(variationId);
+      const image = text(v.mainImage, "Variation image", 500);
+      validateImagePath(image);
+      return { id: variationId, name: text(v.name, "Variation name", 160, true), size: text(v.size, "Variation size", 120), price: text(v.price, "Variation price", 80), mainImage: image };
+    });
     return {
+      ...(p.rank === undefined ? {} : { rank: p.rank as number }),
+      variations,
       id,
       name: text(p.name, "Product name", 160, true),
       price: text(p.price, "Price", 80),
@@ -103,4 +123,13 @@ export function imageExtension(bytes: Buffer): "jpg" | "png" | "webp" {
   throw new CatalogueError(
     "Unsupported image format. SVG and executable files are not accepted.",
   );
+}
+
+export function separateMandala(products: CatalogueProduct[]): CatalogueProduct[] {
+  return products.flatMap(product => {
+    if (product.id !== "product-15" || product.name.trim().toLowerCase() !== "mandala stencil") return [product];
+    const round = { ...product, name: "Round Mandala Stencils", description: "Round mandala stencils for decorative painting and textured finishes. Enquire about available designs and sizes.", variations: product.variations ?? [] };
+    if (products.some(item => item.id === "mandala-square")) return [round];
+    return [round, { ...product, id: "mandala-square", name: "Square Mandala Stencils", featured: false, description: "Square mandala stencils for decorative painting and textured finishes. The current photo is a shared mandala reference; request the exact square design before ordering.", variations: [] }];
+  });
 }

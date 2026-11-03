@@ -2031,3 +2031,15 @@ form p[role="status"] {
     width: 100%;
   }
 }
+
+.product-price { display: block; color: #185bc6; font-size: 1.15rem; font-weight: 650; margin: 12px 0; }
+.product-detail-grid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 32px; margin: 28px 0 64px; align-items: start; }
+.product-detail-photo { overflow: hidden; border-radius: 28px; }
+.product-detail-photo .catalogue-image { aspect-ratio: 1; height: auto; }
+.product-detail-copy { padding: clamp(22px,4vw,48px); border-radius: 28px; min-width: 0; }
+.product-detail-copy h1 { font-size: clamp(2rem,4vw,3.6rem); line-height: 1.1; overflow-wrap: anywhere; margin: 16px 0; }
+.product-detail-copy p { margin-bottom: 22px; }
+.product-detail-copy .product-price { font-size: 1.7rem; }
+.product-options { display: grid; gap: 12px; margin: 24px 0; border: 1px solid #b5cdeb; border-radius: 18px; padding: 20px; min-width: 0; }
+.product-options input,.product-options select { width: 100%; min-width: 0; padding: 12px; border: 1px solid #b5cdeb; border-radius: 12px; background: #ffffffb0; color: #17375c; }
+@media(max-width:760px) { .product-detail-grid { grid-template-columns: minmax(0,1fr); gap: 20px; } }

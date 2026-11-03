@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import type { PublicProduct } from "@/lib/catalogue-types";
+import { displayPrice, productUrl } from "@/lib/product-details";
 import { productSlides } from "@/lib/product-imagery";
 
 export default function HomepageProductShowcase({
@@ -40,7 +41,7 @@ export default function HomepageProductShowcase({
           <Link
             className="product-preview glass-panel"
             key={product.id}
-            href={"/shop?search=" + encodeURIComponent(product.name.trim())}
+            href={productUrl(product)}
           >
             <div className={`preview-image${image?.generated ? " preview-image-styled" : ""}`}>
               <span className="product-number">0{index + 1}</span>
@@ -62,7 +63,7 @@ export default function HomepageProductShowcase({
                   .toLowerCase()
                   .replace(/(^|\s)\S/g, (c) => c.toUpperCase())}
               </h3>
-              <span className="muted">Product enquiries welcome</span>
+              <span className="product-price">{displayPrice(product)}</span>
             </div>
           </Link>
           );
