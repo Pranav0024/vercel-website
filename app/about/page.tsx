@@ -2,7 +2,7 @@ import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, Layers3, Package, Globe2 } from "lucide-react";
 
-export const metadata = pageMetadata("About Our Materials & Sourcing Business", "Learn about Paniar, a dealer in textures, building materials and application tools. Discuss product sourcing, bulk requirements and import-export enquiries.", "/about");
+export const metadata = pageMetadata("About Our Materials & Sourcing Business", "Shop directly with Paniar, a Ludhiana online store for texture tools, stencils and building materials. Discuss product sourcing, bulk requirements and import-export enquiries.", "/about");
 
 export default function AboutPage() {
   return (
@@ -11,8 +11,7 @@ export default function AboutPage() {
         <p className="eyebrow">About Paniar</p>
         <h1>Materials with possibility.</h1>
         <p className="intro-copy">
-          A dealer for textures and building materials. A point of contact for
-          your next project, sourcing conversation or import and export enquiry.
+          Paniar is an online store based in Ludhiana. Browse our selection of tools, stencils and materials, then contact us on WhatsApp to order directly.
         </p>
       </header>
 

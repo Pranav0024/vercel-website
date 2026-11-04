@@ -17,14 +17,14 @@ export default function Hero() {
           Made possible.
         </h1>
         <p>
-          Paniar is a Ludhiana dealer in texture tools, stencils and building materials. Tell us what you need for your shop or your next project.
+          Shop texture tools, stencils and building materials directly from Paniar, our online store based in Ludhiana.
         </p>
         <div className="hero-actions">
-          <Link href="/#expertise" className="button button-primary">
-            Explore our world <ArrowUpRight size={18} />
+          <Link href="/shop" className="button button-primary">
+            Shop the catalogue <ArrowUpRight size={18} />
           </Link>
-          <Link href="/contact?interest=dealer" className="button button-glass">
-            Dealer enquiry <ArrowUpRight size={18} />
+          <Link href="/contact?interest=order" className="button button-glass">
+            Ask about an order <ArrowUpRight size={18} />
           </Link>
         </div>
         <a href="#expertise" className="hero-scroll">
