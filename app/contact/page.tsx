@@ -9,6 +9,7 @@ function ContactEnquiry() {
   const [notice, setNotice] = useState("");
   const params = useSearchParams();
   const interestMap: Record<string, string> = {
+    dealer: "Dealer enquiry",
     Textures: "Textures & finishes",
     "Building materials": "Building materials",
     "Imports & exports": "Import & export",
@@ -53,8 +54,7 @@ function ContactEnquiry() {
         <p className="eyebrow">Contact Paniar</p>
         <h1>Let’s talk materials.</h1>
         <p className="intro-copy">
-          Tell us about your textures, building materials or import and export
-          requirement. Start an enquiry here or reach us directly.
+          Contact our Ludhiana sales team for texture tools, stencils and building materials. For dealer pricing, share your business name, city and quantities.
         </p>
       </header>
 
@@ -96,6 +96,7 @@ function ContactEnquiry() {
                 <option>Textures &amp; finishes</option>
                 <option>Building materials</option>
                 <option>Import &amp; export</option>
+                <option>Dealer enquiry</option>
                 <option>General enquiry</option>
               </select>
             </div>
@@ -130,7 +131,8 @@ function ContactEnquiry() {
           </div>
           <div className="info-card glass-panel">
             <Phone aria-hidden="true" />
-            <h3>Phone</h3>
+            <h3>Pranav Salgotra</h3>
+            <p className="muted">Sales &amp; Sourcing Executive</p>
             <a className="text-link" href="tel:+918968310500">
               +91 89683 10500
             </a>
@@ -150,6 +152,12 @@ function ContactEnquiry() {
               Open WhatsApp <ArrowUpRight size={18} aria-hidden="true" />
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
+          </div>
+          <div className="info-card glass-panel">
+            <h3>Registered business</h3>
+            <p>PANIAR · Proprietor: Rakesh Kumar</p>
+            <p>GSTIN: 03ARCPK7508A2ZE</p>
+            <p className="muted">First Floor, B-28-609/1/J/2, Opp. Toor Clinic, Near Ravi Dass Gurudwara Dharmshala, Jawaddi Kalan, Ludhiana, Punjab 141013</p>
           </div>
           <p className="muted">
             Get to know{" "}

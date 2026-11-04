@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ProductGallery from "./ProductGallery";
 import type { PublicProduct } from "@/lib/catalogue-types";
+import { formatPrice } from "@/lib/product-details";
 import { productDescription } from "@/lib/product-copy";
 
 export default function ProductDetails({ product }: { product: PublicProduct }) {
@@ -19,7 +20,7 @@ export default function ProductDetails({ product }: { product: PublicProduct }) 
       <div className="glass-panel product-detail-photo"><ProductGallery key={image} mainImage={image} name={variation ? `${product.name} — ${variation.name}` : product.name} number={1} /></div>
       <section className="glass-panel product-detail-copy">
         <span className="eyebrow">{product.category}</span><h1>{product.name}</h1>
-        <p className="product-price" aria-live="polite">{variation?.price || product.price || "Price on enquiry"}</p>
+        <p className="product-price" aria-live="polite">{formatPrice(variation?.price || product.price)}</p>
         <p>{productDescription(product)}</p>
         {variations.length > 0 && <fieldset className="product-options"><legend>Choose a variation · {variations.length} options</legend>
           <label htmlFor="variation-search">Find a design or size</label><input id="variation-search" type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search variations…" />

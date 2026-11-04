@@ -17,15 +17,14 @@ export default function Hero() {
           Made possible.
         </h1>
         <p>
-          From the texture of a wall to the possibilities of global trade. We
-          bring materials, products and sourcing together, under one name.
+          Paniar is a Ludhiana dealer in texture tools, stencils and building materials. Tell us what you need for your shop or your next project.
         </p>
         <div className="hero-actions">
           <Link href="/#expertise" className="button button-primary">
             Explore our world <ArrowUpRight size={18} />
           </Link>
-          <Link href="/contact" className="button button-glass">
-            Discuss a requirement <ArrowUpRight size={18} />
+          <Link href="/contact?interest=dealer" className="button button-glass">
+            Dealer enquiry <ArrowUpRight size={18} />
           </Link>
         </div>
         <a href="#expertise" className="hero-scroll">

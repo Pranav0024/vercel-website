@@ -9,3 +9,5 @@ export default function ContactLayout({
 }) {
   return children;
 }
+
+export const dynamic = "force-dynamic";

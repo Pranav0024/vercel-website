@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, MessageCircle } from "lucide-react";
-export default function EnquiryBanner() {
+export default function EnquiryBanner({ showSalesContact = false }: { showSalesContact?: boolean }) {
   return (
     <section className="page-shell enquiry-wrap">
       <div className="enquiry-banner glass-panel">
@@ -12,7 +12,7 @@ export default function EnquiryBanner() {
             Our next conversation.
           </h2>
           <p>
-            A material, a product or an idea. Tell us what you have in mind.
+            {showSalesContact ? <>Pranav Salgotra · Sales &amp; Sourcing Executive<br /><a href="tel:+918968310500">+91 89683 10500</a> · <a href="mailto:paniar888@gmail.com">paniar888@gmail.com</a><br />PANIAR · GSTIN 03ARCPK7508A2ZE</> : "A material, a product or an idea. Tell us what you have in mind."}
           </p>
         </div>
         <div className="enquiry-actions">

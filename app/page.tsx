@@ -114,7 +114,7 @@ export default async function Home() {
           ))}
         </div>
       </section>
-      <EnquiryBanner />
+      <EnquiryBanner showSalesContact />
     </main>
   );
 }

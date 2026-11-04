@@ -1,6 +1,11 @@
 import type { PublicProduct } from "./catalogue-types";
 
 export const productUrl = (product: Pick<PublicProduct, "id">) => `/shop/${encodeURIComponent(product.id)}`;
+export function formatPrice(value: string) {
+  const amount = value.trim();
+  if (/^\d[\d,]*(?:\.\d+)?$/.test(amount)) return "₹" + Number(amount.replaceAll(",", "")).toLocaleString("en-IN", { maximumFractionDigits: 20 });
+  return amount || "Price on enquiry";
+}
 export function displayPrice(product: PublicProduct) {
   const variations = product.variations ?? [];
   const prices = [...new Set(variations.map(v => v.price.trim() || product.price.trim()))];
@@ -12,5 +17,5 @@ export function displayPrice(product: PublicProduct) {
     }
     return `${prices.find(Boolean) || "Price on enquiry"} · varies by option`;
   }
-  return prices[0] || product.price.trim() || "Price on enquiry";
+  return formatPrice(prices[0] || product.price);
 }
