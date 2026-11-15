@@ -4,9 +4,11 @@ import Link from "next/link";
 import ProductGallery from "./ProductGallery";
 import type { PublicProduct } from "@/lib/catalogue-types";
 import { formatPrice } from "@/lib/product-details";
+import { productGuide } from "@/lib/product-guides";
 import { productDescription } from "@/lib/product-copy";
 
 export default function ProductDetails({ product }: { product: PublicProduct }) {
+  const guide = productGuide(product);
   const variations = product.variations ?? [];
   const [selected, setSelected] = useState(variations[0]?.id ?? "");
   const [search, setSearch] = useState("");
@@ -29,6 +31,12 @@ export default function ProductDetails({ product }: { product: PublicProduct }) 
           <p>Contact us to confirm the working pressure and compressor requirements for this model before ordering. Share the material you plan to spray so we can check compatibility.</p>
           <h3>What should I confirm before ordering?</h3>
           <p>Ask about nozzle sizes, hopper capacity, included accessories and delivery.</p>
+        </section>}
+        {guide && <section aria-labelledby="product-guide-title">
+          <h2 id="product-guide-title">{guide.title}</h2>
+          <p>{guide.introduction}</p>
+          <h3>What should I confirm before ordering?</h3>
+          <p>{guide.ordering}</p>
         </section>}
         {variations.length > 0 && <fieldset className="product-options"><legend>Choose a variation · {variations.length} options</legend>
           <label htmlFor="variation-search">Find a design or size</label><input id="variation-search" type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search variations…" />
