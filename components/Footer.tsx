@@ -41,7 +41,7 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Paniar. All rights reserved.</span>
-        <span>Textures · Building materials · Imports & exports</span>
+        <span>Textures · Building materials · Tools & stencils</span>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>

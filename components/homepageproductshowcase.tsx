@@ -14,7 +14,7 @@ export default function HomepageProductShowcase({
   const items = (featured.length ? featured : products).slice(0, 4);
   if (!items.length) return null;
   return (
-    <section className="catalogue-preview section-space page-shell">
+    <section id="products" className="catalogue-preview section-space page-shell">
       <div className="section-heading">
         <div>
           <span className="eyebrow">THE RIGHT TOOLS FOR THE DETAIL</span>

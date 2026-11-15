@@ -34,7 +34,7 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd({
           "@context": "https://schema.org",
           "@graph": [
-            { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Paniar", url: SITE_URL, logo: `${SITE_URL}/logo%20v1.png`, description: SITE_DESCRIPTION, email: "paniar888@gmail.com", telephone: "+918968310500", contactPoint: { "@type": "ContactPoint", telephone: "+918968310500", contactType: "sales", email: "paniar888@gmail.com" }, knowsAbout: ["Textures and finishes", "Building materials", "Texture application tools", "Product sourcing", "Imports and exports"] },
+            { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Paniar", url: SITE_URL, logo: `${SITE_URL}/logo%20v1.png`, description: SITE_DESCRIPTION, email: "paniar888@gmail.com", telephone: "+918968310500", contactPoint: { "@type": "ContactPoint", telephone: "+918968310500", contactType: "sales", email: "paniar888@gmail.com" }, knowsAbout: ["Textures and finishes", "Building materials", "Texture application tools", "Product sourcing"] },
             { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: "Paniar", url: SITE_URL, inLanguage: "en-IN", publisher: { "@id": `${SITE_URL}/#organization` } },
           ],
         }) }} />

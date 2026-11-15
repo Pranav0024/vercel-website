@@ -1,7 +1,7 @@
 import type { PublicProduct } from "@/lib/catalogue-types";
 
 const descriptions: Record<string, string> = {
-  "/TEXTURE SPRAYER.png": "Texture spray gun for wall-finish and plaster application work. Enquire about specifications, compatible materials and bulk supply.",
+  "/TEXTURE SPRAYER.png": "Pneumatic texture spray gun with a hopper for decorative wall texture application. Connect to a suitable air compressor. Ask Paniar about working air pressure, nozzle sizes, compatible texture materials and delivery.",
   "/Block Brush.png": "Block brush for decorative wall textures and surface-finish application. Contact Paniar for product details and quantities.",
   "/Stucco Trowel.png": "Stucco trowel for plaster and decorative wall-finish work. Discuss blade specifications, availability and quotations.",
   "/C-Brush.png": "C-shaped texture brush for decorative surface application. Ask about brush specifications and project quantities.",

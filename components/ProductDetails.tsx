@@ -22,6 +22,14 @@ export default function ProductDetails({ product }: { product: PublicProduct }) 
         <span className="eyebrow">{product.category}</span><h1>{product.name}</h1>
         <p className="product-price" aria-live="polite">{formatPrice(variation?.price || product.price)}</p>
         <p>{productDescription(product)}</p>
+        {product.mainImage === "/TEXTURE SPRAYER.png" && <section aria-labelledby="texture-gun-guide">
+          <h2 id="texture-gun-guide">Pneumatic hopper spray gun for wall textures</h2>
+          <p>A texture gun uses compressed air to apply compatible decorative wall texture materials. This hopper spray gun is intended for texture application.</p>
+          <h3>What air pressure does it need?</h3>
+          <p>Contact us to confirm the working pressure and compressor requirements for this model before ordering. Share the material you plan to spray so we can check compatibility.</p>
+          <h3>What should I confirm before ordering?</h3>
+          <p>Ask about nozzle sizes, hopper capacity, included accessories and delivery.</p>
+        </section>}
         {variations.length > 0 && <fieldset className="product-options"><legend>Choose a variation · {variations.length} options</legend>
           <label htmlFor="variation-search">Find a design or size</label><input id="variation-search" type="search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search variations…" />
           <label htmlFor="variation-choice">Design / size</label><select id="variation-choice" value={selected} onChange={e => setSelected(e.target.value)}>

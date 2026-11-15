@@ -13,7 +13,8 @@ export async function generateMetadata({ params }: Props) {
   const product = await findProduct((await params).id);
   if (!product) return { title: "Product not found", robots: { index: false } };
   const description = displayPrice(product) + ". " + productDescription(product);
-  const metadata = pageMetadata(product.name, description, productUrl(product));
+  const title = product.mainImage === "/TEXTURE SPRAYER.png" ? "Pneumatic Texture Spray Gun | Air Hopper Gun for Walls" : product.name;
+  const metadata = pageMetadata(title, description, productUrl(product));
   const images = [new URL(product.mainImage, SITE_URL).href];
   return { ...metadata, openGraph: { ...metadata.openGraph, images }, twitter: { ...metadata.twitter, images } };
 }

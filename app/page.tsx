@@ -9,7 +9,7 @@ import {
   ArrowUpRight,
   Layers3,
   PackageSearch,
-  Globe2,
+  Package,
   MoveRight,
 } from "lucide-react";
 
@@ -19,6 +19,7 @@ export default async function Home() {
   return (
     <main id="main-content">
       <Hero />
+      <HomepageProductShowcase products={catalogue} />
       <div className="capability-strip page-shell">
         <span>
           YOUR REQUIREMENT.
@@ -32,7 +33,7 @@ export default async function Home() {
           <PackageSearch size={20} /> Building materials
         </div>
         <div>
-          <Globe2 size={20} /> Imports & exports
+          <Package size={20} /> Tools & stencils
         </div>
         <span className="strip-end">
           A broader perspective <ArrowUpRight size={17} />
@@ -77,7 +78,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      <HomepageProductShowcase products={catalogue} />
+
       <section className="process-section page-shell section-space">
         <div className="process-header">
           <span className="eyebrow">FROM A REQUIREMENT TO A WAY FORWARD</span>

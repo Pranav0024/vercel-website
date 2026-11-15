@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.paniar.in";
-export const SITE_DESCRIPTION = "Paniar deals in textures and finishes, building materials, application tools and product sourcing. Contact us for bulk supply and import-export enquiries.";
+export const SITE_DESCRIPTION = "Shop pneumatic texture spray guns, wall texture tools, mandala stencils and building materials at Paniar. Contact our Ludhiana team for prices and orders.";
 const images = [{ url: "/images/materials-interior.jpg", alt: "Textures, architectural finishes and building materials from Paniar" }];
 
 export function pageMetadata(title: string, description: string, path: string): Metadata {

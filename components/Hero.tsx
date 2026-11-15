@@ -27,11 +27,11 @@ export default function Hero() {
             Ask about an order <ArrowUpRight size={18} />
           </Link>
         </div>
-        <a href="#expertise" className="hero-scroll">
+        <a href="#products" className="hero-scroll">
           <span className="glass-icon">
             <ArrowDown size={17} />
           </span>{" "}
-          A different perspective on supply
+          Explore our products
         </a>
       </div>
       <div className="hero-visual">
