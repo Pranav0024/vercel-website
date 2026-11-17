@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 export default function Footer() {
   return (
     <footer className="site-footer page-shell">
@@ -39,6 +40,7 @@ export default function Footer() {
           <span className="blue-type">One point of contact.</span>
         </div>
       </div>
+      <ThemeToggle />
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Paniar. All rights reserved.</span>
         <span>Textures · Building materials · Tools & stencils</span>
